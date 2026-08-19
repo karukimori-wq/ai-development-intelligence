@@ -1,0 +1,14 @@
+{
+  "eventId": "INT-EVT-20260820-growth-customer-review-retrieval",
+  "taskRunId": "TASK-growth-customer-registration-review-20260820",
+  "eventType": "retrieval",
+  "occurredAt": "2026-08-20T00:50:00Z",
+  "project": "Growth-Engine",
+  "taskClass": "review",
+  "knowledgeIds": ["RULE-canonical-owner-reference-first"],
+  "evidenceIds": [],
+  "outcome": "unknown",
+  "iterationsToVerifiedResult": null,
+  "timeToRootCauseMinutes": null,
+  "notes": "Pilot operational-learning review of the customer registration implementation. Retrieved the canonical-owner rule because Customer is a Growth Engine source-of-truth domain."
+}
