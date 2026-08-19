@@ -35,6 +35,8 @@ jobs:
         run: node scripts/self-test-integrity.mjs
       - name: Check knowledge freshness
         run: node scripts/check-staleness.mjs
+      - name: Benchmark retrieval quality
+        run: node scripts/benchmark-retrieval.mjs
       - name: Regenerate derived indexes
         run: node scripts/generate-indexes.mjs
       - name: Regenerate health metrics
