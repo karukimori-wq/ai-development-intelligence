@@ -1,0 +1,18 @@
+{
+  "id": "FAIL-static-host-asset-path-assumption",
+  "type": "failure",
+  "title": "Static deployment asset paths assumed root hosting",
+  "status": "candidate",
+  "summary": "Numeria Studio required a fix to use relative asset paths for GitHub Pages/static hosting. Root-relative assumptions can work locally or at a domain root but fail when the application is served from a repository subpath.",
+  "domains": ["static-hosting", "deployment", "frontend", "assets"],
+  "projectsObserved": ["numeria-studio"],
+  "applicability": ["GitHub Pages", "Static hosts using path prefixes"],
+  "exceptions": ["Root-relative paths are valid when deployment is guaranteed at origin root"],
+  "confidence": 0.9,
+  "observedCount": 1,
+  "evidence": ["EVID-numeria-pages-relative-assets-20260713"],
+  "relationships": [],
+  "createdAt": "2026-08-20T00:00:00Z",
+  "lastVerifiedAt": "2026-08-20T00:00:00Z",
+  "supersededBy": null
+}
