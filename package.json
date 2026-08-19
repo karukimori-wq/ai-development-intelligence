@@ -1,0 +1,13 @@
+{
+  "name": "ai-development-intelligence",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate": "node scripts/validate-intelligence.mjs && node scripts/validate-schemas.mjs && node scripts/check-staleness.mjs",
+    "generate:indexes": "node scripts/generate-indexes.mjs"
+  },
+  "devDependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1"
+  }
+}
