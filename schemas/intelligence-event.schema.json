@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/karukimori-wq/ai-development-intelligence/schemas/intelligence-event.schema.json",
+  "title": "AI Development Intelligence Usage Event",
+  "type": "object",
+  "required": ["eventId", "eventType", "occurredAt", "project", "taskClass"],
+  "properties": {
+    "eventId": {"type":"string","pattern":"^INT-EVT-[A-Za-z0-9._-]+$"},
+    "eventType": {"enum":["retrieval","knowledge_used","knowledge_rejected","failure_prevented","repeat_failure","extraction_evaluated","knowledge_captured","contradiction_observed"]},
+    "occurredAt": {"type":"string","format":"date-time"},
+    "project": {"type":"string","minLength":1},
+    "taskClass": {"enum":["build","debug","deploy","integrate","migrate","test","review","architecture","other"]},
+    "knowledgeIds": {"type":"array","items":{"type":"string"},"uniqueItems":true,"default":[]},
+    "evidenceIds": {"type":"array","items":{"type":"string"},"uniqueItems":true,"default":[]},
+    "outcome": {"enum":["unknown","helped","neutral","rejected","prevented_failure","failed"]},
+    "iterationsToVerifiedResult": {"type":["integer","null"],"minimum":0},
+    "timeToRootCauseMinutes": {"type":["number","null"],"minimum":0},
+    "notes": {"type":"string"}
+  },
+  "additionalProperties": false
+}
