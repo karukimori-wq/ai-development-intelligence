@@ -1,0 +1,21 @@
+{
+  "id": "RULE-readiness-must-prove-runtime-capability",
+  "type": "rule",
+  "title": "Production readiness must prove runtime capability",
+  "status": "active",
+  "summary": "Do not mark an infrastructure-backed or external side-effect capability production-ready from configuration presence alone. Readiness must prove the relevant runtime capability, such as database reachability or provider safety readiness, and high-risk actions must remain blocked or dry-run until proof passes.",
+  "domains": ["production-readiness", "deployment", "persistence", "integrations", "safety"],
+  "projectsObserved": ["Growth-Engine", "Communication-Planner", "Velvet"],
+  "applicability": ["Databases", "External messaging providers", "Other infrastructure-backed production features"],
+  "exceptions": ["Pure compile-time features with no runtime dependency"],
+  "confidence": 0.98,
+  "observedCount": 3,
+  "evidence": ["EVID-growth-runtime-health-readiness-20260817", "EVID-communication-live-send-gates-20260818", "EVID-velvet-db-url-resolver-20260818"],
+  "relationships": [
+    {"type":"supersedes","targetId":"PAT-live-side-effects-require-readiness-gate"},
+    {"type":"supports","targetId":"RULE-production-persistence-needs-runtime-proof"}
+  ],
+  "createdAt": "2026-08-20T00:00:00Z",
+  "lastVerifiedAt": "2026-08-20T00:00:00Z",
+  "supersededBy": null
+}
