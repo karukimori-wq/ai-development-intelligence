@@ -22,3 +22,7 @@ jobs:
           node-version: '22'
       - name: Validate intelligence integrity
         run: node scripts/validate-intelligence.mjs
+      - name: Regenerate derived indexes
+        run: node scripts/generate-indexes.mjs
+      - name: Verify generated indexes are committed
+        run: git diff --exit-code -- index/knowledge-index.json index/evidence-reverse-index.json
