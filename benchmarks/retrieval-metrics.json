@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "measuredAt": "2026-08-20T00:30:00.000Z",
+  "status": "generated_by_ci",
+  "modes": {},
+  "decision": {
+    "semanticVectorNeededNow": null,
+    "thresholds": {"top1Accuracy": 0.8, "recallAt5": 0.9},
+    "note": "Placeholder committed before CI generation. The benchmark generator is authoritative for measured values."
+  }
+}
