@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "weights": {
+    "type": {"rule": 40, "failure": 32, "pattern": 20, "decision": 14, "discovery": 10},
+    "status": {"active": 18, "candidate": 7, "subsumed": -40, "superseded": -60, "stale": -25, "rejected": -100},
+    "projectExact": 24,
+    "domainExactEach": 12,
+    "keywordEach": 4,
+    "multiProject": 6,
+    "hasEvidence": 6,
+    "verified": 5,
+    "unverified": -5,
+    "stalePenalty": -20
+  },
+  "limits": {"rules": 3, "failures": 3, "patterns": 2, "other": 2, "total": 10},
+  "notes": "Ranking narrows what to read first; it does not establish truth. Current code and formal contracts remain authoritative."
+}
