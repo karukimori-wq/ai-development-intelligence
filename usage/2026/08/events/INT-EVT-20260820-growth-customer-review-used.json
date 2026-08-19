@@ -1,0 +1,14 @@
+{
+  "eventId": "INT-EVT-20260820-growth-customer-review-used",
+  "taskRunId": "TASK-growth-customer-registration-review-20260820",
+  "eventType": "knowledge_used",
+  "occurredAt": "2026-08-20T00:52:00Z",
+  "project": "Growth-Engine",
+  "taskClass": "review",
+  "knowledgeIds": ["RULE-canonical-owner-reference-first"],
+  "evidenceIds": [],
+  "outcome": "helped",
+  "iterationsToVerifiedResult": 1,
+  "timeToRootCauseMinutes": null,
+  "notes": "Current commit was inspected and the rule materially focused verification on whether customer creation remains in Growth Engine and downstream event payload uses a customer reference rather than copying a foreign source of truth. The implementation creates the Customer in Growth Engine and publishes customerId as the event reference."
+}
