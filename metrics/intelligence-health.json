@@ -1,40 +1,50 @@
 {
-  "version": 1,
-  "measuredAt": "2026-08-20T08:30:00+09:00",
+  "version": 2,
+  "generated": true,
+  "measuredAt": "2026-08-20T00:30:00.000Z",
   "inventory": {
-    "indexedKnowledgeEntries": 11,
+    "manifestKnowledgeEntries": 11,
+    "defaultRetrievalEntries": 9,
     "activeRules": 3,
     "activeFailures": 2,
     "candidateFailures": 1,
-    "activePatterns": 1,
-    "candidatePatterns": 4,
-    "connectedProjectAgentEntrypoints": 6
+    "activePatterns": 0,
+    "candidatePatterns": 3,
+    "subsumedEntries": 2,
+    "evidenceReferenced": 7
   },
   "maturity": {
     "multiProjectRules": 2,
-    "entriesWithEvidenceRequired": true,
     "retrievalProtocolPresent": true,
     "extractionProtocolPresent": true,
-    "promotionPolicyPresent": true
+    "promotionPolicyPresent": true,
+    "immutableUsageEvents": true
   },
   "qualitySignals": {
-    "knownContradictions": 0,
-    "knownSupersededEntries": 0,
     "staleEntries": 0,
-    "unresolvedEvidenceReferences": 0
+    "unverifiedEntries": 3,
+    "knownSupersededOrSubsumed": 2
+  },
+  "usage": {
+    "totalImmutableEvents": 1,
+    "eventCounts": {
+      "knowledge_captured": 1
+    }
   },
   "outcomeMetrics": {
-    "retrievalEvents": null,
-    "knowledgeUsedEvents": null,
-    "failuresPrevented": null,
-    "repeatFailureRate": null,
-    "meanIterationsToFix": null,
-    "meanTimeToRootCause": null,
+    "retrievalEvents": 0,
+    "knowledgeUsedEvents": 0,
+    "knowledgeRejectedEvents": 0,
+    "failuresPrevented": 0,
+    "repeatFailures": 0,
+    "repeatFailureShare": null,
+    "meanIterationsToVerifiedResult": null,
+    "meanTimeToRootCauseMinutes": null,
     "newInputTokensPerTask": null
   },
   "notes": [
-    "Inventory values are a Phase 2 baseline from the compact index and connected AGENTS.md entrypoints.",
-    "Outcome metrics remain null until usage events are captured; do not invent them.",
-    "Cache rate is intentionally not treated as a primary intelligence-quality metric."
+    "Generated from manifest, staleness policy and immutable usage events.",
+    "Zero event counts mean no matching event has been recorded; they do not prove zero real-world occurrences.",
+    "newInputTokensPerTask remains null until a trustworthy comparable-task token source exists."
   ]
 }
