@@ -1,0 +1,14 @@
+{
+  "eventId": "INT-EVT-20260820-communication-webhook-used",
+  "taskRunId": "TASK-communication-webhook-identity-review-20260820",
+  "eventType": "knowledge_used",
+  "occurredAt": "2026-08-20T01:02:00Z",
+  "project": "Communication-Planner",
+  "taskClass": "review",
+  "knowledgeIds": ["FAIL-webhook-identity-precedence"],
+  "evidenceIds": ["EVID-webhook-identity-precedence-20260815"],
+  "outcome": "helped",
+  "iterationsToVerifiedResult": 1,
+  "timeToRootCauseMinutes": null,
+  "notes": "The failure knowledge directly identified the field-precedence surface to verify. Commit 79d667b changes fallback order from source-before-sender to sender-before-source while preserving explicit payload identity first, matching the stored failure/root-cause lesson."
+}
