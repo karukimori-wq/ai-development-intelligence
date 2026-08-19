@@ -35,8 +35,12 @@ jobs:
         run: node scripts/self-test-integrity.mjs
       - name: Check knowledge freshness
         run: node scripts/check-staleness.mjs
-      - name: Benchmark retrieval quality
+      - name: Benchmark deterministic retrieval expectations
         run: node scripts/benchmark-retrieval.mjs
+      - name: Generate retrieval quality metrics
+        run: node scripts/benchmark-retrieval-metrics.mjs
+      - name: Run retrieval scale regression test
+        run: node scripts/scale-test-retrieval.mjs
       - name: Regenerate derived indexes
         run: node scripts/generate-indexes.mjs
       - name: Regenerate health metrics
@@ -44,4 +48,4 @@ jobs:
           INTELLIGENCE_NOW: '2026-08-20T00:30:00.000Z'
         run: node scripts/generate-health-metrics.mjs
       - name: Verify generated artifacts are committed
-        run: git diff --exit-code -- index/knowledge-index.json index/evidence-reverse-index.json metrics/intelligence-health.json
+        run: git diff --exit-code -- index/knowledge-index.json index/evidence-reverse-index.json metrics/intelligence-health.json benchmarks/retrieval-metrics.json
