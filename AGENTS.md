@@ -4,13 +4,17 @@
 
 Preserve verified development experience so future agents can reuse prior reasoning without loading the entire knowledge base.
 
-## Start every task
+## Start every substantial task
 
 1. Identify the target project, technologies, operation, and failure mode.
-2. Read `index/knowledge-index.json` and `index/project-index.md`.
-3. Search `knowledge/` and the relevant `memory/<project>/` before doing expensive rediscovery.
-4. Read only entries relevant to the current task.
-5. Follow links to evidence when a remembered claim affects an important decision.
+2. Follow `core/task-retrieval-protocol.md`.
+3. Read `index/knowledge-index.json` and `index/project-index.md`.
+4. Search `knowledge/` and the relevant `memory/<project>/` before expensive rediscovery.
+5. Read only entries relevant to the current task.
+6. Follow links to evidence when a remembered claim affects an important decision.
+7. Inspect current target code/contracts before applying remembered guidance.
+
+For trivial edits with no meaningful engineering decision, retrieval may be skipped.
 
 ## Source-of-truth boundaries
 
@@ -52,7 +56,7 @@ Use progressive disclosure:
 3. full relevant entries
 4. evidence only when needed
 
-Do not bulk-load the repository into context.
+Default to the retrieval budget in `core/task-retrieval-protocol.md`. Do not bulk-load the repository into context.
 
 ## Safety and integrity
 
