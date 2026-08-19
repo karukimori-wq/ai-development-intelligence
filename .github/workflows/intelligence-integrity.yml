@@ -47,5 +47,7 @@ jobs:
         env:
           INTELLIGENCE_NOW: '2026-08-20T00:30:00.000Z'
         run: node scripts/generate-health-metrics.mjs
+      - name: Generate task-run learning metrics
+        run: node scripts/generate-task-run-metrics.mjs
       - name: Verify generated artifacts are committed
-        run: git diff --exit-code -- index/knowledge-index.json index/evidence-reverse-index.json metrics/intelligence-health.json benchmarks/retrieval-metrics.json
+        run: git diff --exit-code -- index/knowledge-index.json index/evidence-reverse-index.json metrics/intelligence-health.json metrics/task-run-metrics.json benchmarks/retrieval-metrics.json
