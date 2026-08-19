@@ -1,0 +1,14 @@
+{
+  "eventId": "INT-EVT-20260820-growth-customer-review-extraction",
+  "taskRunId": "TASK-growth-customer-registration-review-20260820",
+  "eventType": "extraction_evaluated",
+  "occurredAt": "2026-08-20T00:54:00Z",
+  "project": "Growth-Engine",
+  "taskClass": "review",
+  "knowledgeIds": ["RULE-canonical-owner-reference-first"],
+  "evidenceIds": [],
+  "outcome": "neutral",
+  "iterationsToVerifiedResult": 1,
+  "timeToRootCauseMinutes": null,
+  "notes": "Extraction evaluated after review. capture=no: the inspected implementation is useful supporting confirmation of an existing ownership rule, but this review alone did not establish a new non-obvious reusable failure, decision, pattern, or rule."
+}
