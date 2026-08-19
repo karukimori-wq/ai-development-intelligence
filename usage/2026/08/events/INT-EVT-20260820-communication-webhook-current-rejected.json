@@ -1,0 +1,14 @@
+{
+  "eventId": "INT-EVT-20260820-communication-webhook-current-rejected",
+  "taskRunId": "TASK-communication-webhook-current-code-20260820",
+  "eventType": "knowledge_rejected",
+  "occurredAt": "2026-08-20T01:17:00Z",
+  "project": "Communication-Planner",
+  "taskClass": "review",
+  "knowledgeIds": ["FAIL-webhook-identity-precedence"],
+  "evidenceIds": ["EVID-webhook-identity-precedence-20260815"],
+  "outcome": "rejected",
+  "iterationsToVerifiedResult": 1,
+  "timeToRootCauseMinutes": null,
+  "notes": "Rejected the historical failure as a current defect after inspecting main: resolveExternalUserId now prefers explicit payload identity, then sender identity, then source identity. The failure remains valid history/diagnostic knowledge, but no fix should be reapplied to current main."
+}
