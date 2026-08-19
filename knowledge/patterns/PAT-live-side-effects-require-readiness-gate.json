@@ -1,0 +1,18 @@
+{
+  "id": "PAT-live-side-effects-require-readiness-gate",
+  "type": "pattern",
+  "title": "Gate live side effects behind explicit readiness",
+  "status": "active",
+  "summary": "External sends or other irreversible provider actions should remain dry-run or blocked until an explicit readiness contract proves the required safety controls, not merely that credentials exist.",
+  "domains": ["integrations", "safety", "production-readiness", "external-side-effects"],
+  "projectsObserved": ["Communication-Planner"],
+  "applicability": ["Messaging adapters", "payment-like side effects", "external write integrations"],
+  "exceptions": [],
+  "confidence": 0.94,
+  "observedCount": 1,
+  "evidence": ["EVID-communication-live-send-gates-20260818"],
+  "relationships": [{"type":"similar_to","targetId":"RULE-production-persistence-needs-runtime-proof"}],
+  "createdAt": "2026-08-20T00:00:00Z",
+  "lastVerifiedAt": "2026-08-20T00:00:00Z",
+  "supersededBy": null
+}
