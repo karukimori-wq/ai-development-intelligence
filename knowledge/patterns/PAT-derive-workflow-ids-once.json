@@ -1,0 +1,18 @@
+{
+  "id": "PAT-derive-workflow-ids-once",
+  "type": "pattern",
+  "title": "Derive workflow identifiers once from canonical context",
+  "status": "candidate",
+  "summary": "For multiple actions belonging to the same workflow instance, derive the reference ID once from the canonical live entity and reuse it across navigation, commands and handoffs.",
+  "domains": ["workflow", "identity", "integration", "ui-navigation"],
+  "projectsObserved": ["Growth-Engine"],
+  "applicability": ["Reservation-to-followup flows", "cross-screen workflow handoffs"],
+  "exceptions": [],
+  "confidence": 0.82,
+  "observedCount": 1,
+  "evidence": ["EVID-growth-derived-id-consistency-20260818"],
+  "relationships": [],
+  "createdAt": "2026-08-20T00:00:00Z",
+  "lastVerifiedAt": "2026-08-20T00:00:00Z",
+  "supersededBy": null
+}
