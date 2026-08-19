@@ -1,0 +1,66 @@
+# AI Development Intelligence — Agent Map
+
+## Mission
+
+Preserve verified development experience so future agents can reuse prior reasoning without loading the entire knowledge base.
+
+## Start every task
+
+1. Identify the target project, technologies, operation, and failure mode.
+2. Read `index/knowledge-index.json` and `index/project-index.md`.
+3. Search `knowledge/` and the relevant `memory/<project>/` before doing expensive rediscovery.
+4. Read only entries relevant to the current task.
+5. Follow links to evidence when a remembered claim affects an important decision.
+
+## Source-of-truth boundaries
+
+- This repository is authoritative for development memory and learned engineering knowledge only.
+- Target repositories are authoritative for their implementation.
+- Formal platform/API/event/data-ownership contracts remain authoritative in their contracts repository.
+- Never copy a product source of truth into this repository as if this repository owned it.
+
+## Capture after meaningful work
+
+Capture only information likely to change a future engineering decision. Classify it as one of:
+
+- discovery
+- failure
+- decision
+- pattern
+- rule
+
+Do not store raw logs, secrets, credentials, personal data, generated build output, or generic documentation that is easy to rediscover.
+
+## Evidence requirements
+
+Every promoted pattern or rule must point to evidence. Prefer stable references such as repository + commit SHA, PR, issue, test, endpoint result, or reproducible observation. Distinguish observed facts from inference.
+
+## Deduplication
+
+Before creating an entry, search for the same underlying claim. If it exists, add evidence, projects observed, verification date, or contradiction data instead of creating a duplicate.
+
+## Promotion
+
+Use `core/promotion-policy.md`. Never promote an item just because it appears plausible. Repeated independent observations increase confidence; contradictions decrease it and must be preserved.
+
+## Retrieval discipline
+
+Use progressive disclosure:
+
+1. indexes
+2. entry summaries/front matter
+3. full relevant entries
+4. evidence only when needed
+
+Do not bulk-load the repository into context.
+
+## Safety and integrity
+
+- Never commit secrets, tokens, passwords, connection strings, private keys, or sensitive personal information.
+- Redact evidence before capture when necessary.
+- Never fabricate evidence, observation counts, test results, commits, or confidence.
+- Mark stale or superseded knowledge rather than silently rewriting history.
+
+## Completion
+
+When changing this repository, keep indexes consistent with added knowledge and validate structured JSON against its schema where practical.
