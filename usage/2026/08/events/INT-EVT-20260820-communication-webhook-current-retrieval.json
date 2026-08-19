@@ -1,0 +1,14 @@
+{
+  "eventId": "INT-EVT-20260820-communication-webhook-current-retrieval",
+  "taskRunId": "TASK-communication-webhook-current-code-20260820",
+  "eventType": "retrieval",
+  "occurredAt": "2026-08-20T01:15:00Z",
+  "project": "Communication-Planner",
+  "taskClass": "review",
+  "knowledgeIds": ["FAIL-webhook-identity-precedence"],
+  "evidenceIds": ["EVID-webhook-identity-precedence-20260815"],
+  "outcome": "unknown",
+  "iterationsToVerifiedResult": null,
+  "timeToRootCauseMinutes": null,
+  "notes": "Retrieved the historical webhook identity-precedence failure to check whether it still describes a defect in current main."
+}
