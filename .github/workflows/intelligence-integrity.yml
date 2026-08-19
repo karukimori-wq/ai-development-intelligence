@@ -5,6 +5,8 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
+  schedule:
+    - cron: '17 2 * * 1'
 
 permissions:
   contents: read
@@ -22,6 +24,8 @@ jobs:
           node-version: '22'
       - name: Validate intelligence integrity
         run: node scripts/validate-intelligence.mjs
+      - name: Check knowledge freshness
+        run: node scripts/check-staleness.mjs
       - name: Regenerate derived indexes
         run: node scripts/generate-indexes.mjs
       - name: Verify generated indexes are committed
