@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/karukimori-wq/ai-development-intelligence/schemas/knowledge-manifest.schema.json",
+  "title": "Knowledge Manifest",
+  "type": "object",
+  "required": ["version", "generatedAt", "entries"],
+  "properties": {
+    "version": {"type":"integer","minimum":1},
+    "generatedAt": {"type":"string","format":"date-time"},
+    "entries": {
+      "type":"array",
+      "items": {
+        "type":"object",
+        "required":["id","type","status","path","domains","projects","evidenceIds"],
+        "properties": {
+          "id":{"type":"string"},
+          "type":{"enum":["discovery","failure","decision","pattern","rule"]},
+          "status":{"enum":["candidate","active","subsumed","superseded","stale","rejected"]},
+          "path":{"type":"string"},
+          "domains":{"type":"array","items":{"type":"string"},"uniqueItems":true},
+          "projects":{"type":"array","items":{"type":"string"},"uniqueItems":true},
+          "evidenceIds":{"type":"array","items":{"type":"string"},"uniqueItems":true},
+          "supersededBy":{"type":["string","null"]},
+          "lastVerifiedAt":{"type":["string","null"],"format":"date-time"}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
