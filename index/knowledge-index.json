@@ -1,0 +1,6 @@
+{
+  "version": 1,
+  "updatedAt": "2026-08-20T00:00:00Z",
+  "entries": [],
+  "notes": "Phase 1 canonical lightweight index. Add one compact record per knowledge entry; do not embed full documents here."
+}
