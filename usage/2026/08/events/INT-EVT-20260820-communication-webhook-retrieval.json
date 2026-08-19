@@ -1,0 +1,14 @@
+{
+  "eventId": "INT-EVT-20260820-communication-webhook-retrieval",
+  "taskRunId": "TASK-communication-webhook-identity-review-20260820",
+  "eventType": "retrieval",
+  "occurredAt": "2026-08-20T01:00:00Z",
+  "project": "Communication-Planner",
+  "taskClass": "review",
+  "knowledgeIds": ["FAIL-webhook-identity-precedence"],
+  "evidenceIds": ["EVID-webhook-identity-precedence-20260815"],
+  "outcome": "unknown",
+  "iterationsToVerifiedResult": null,
+  "timeToRootCauseMinutes": null,
+  "notes": "Operational-learning pilot retrieved the known webhook identity-precedence failure before reviewing the historical adapter fix."
+}
