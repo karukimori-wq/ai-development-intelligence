@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "cases": [
+    {
+      "id": "BENCH-growth-production-postgres",
+      "project": "Growth-Engine",
+      "domains": ["deployment", "persistence", "production-readiness"],
+      "keywords": ["postgres", "readiness", "database"],
+      "expectedTop": ["RULE-readiness-must-prove-runtime-capability"],
+      "expectedWithinTop5": ["PAT-centralize-equivalent-environment-resolution"]
+    },
+    {
+      "id": "BENCH-communication-webhook-identity",
+      "project": "Communication-Planner",
+      "domains": ["webhooks", "identity", "adapters"],
+      "keywords": ["sender", "source", "identity"],
+      "expectedTop": ["FAIL-webhook-identity-precedence"],
+      "expectedWithinTop5": ["PAT-high-consequence-actions-need-hard-gates"]
+    },
+    {
+      "id": "BENCH-growth-numeria-handoff",
+      "project": "Growth-Engine",
+      "domains": ["integration", "contracts", "routing", "identity"],
+      "keywords": ["numeria", "handoff", "route"],
+      "expectedTop": ["FAIL-cross-app-handoff-contract-drift"],
+      "expectedWithinTop5": ["RULE-canonical-owner-reference-first"]
+    },
+    {
+      "id": "BENCH-numeria-static-host",
+      "project": "numeria-studio",
+      "domains": ["static-hosting", "deployment", "frontend", "assets"],
+      "keywords": ["pages", "asset", "path"],
+      "expectedTop": ["FAIL-static-host-asset-path-assumption"],
+      "expectedWithinTop5": []
+    },
+    {
+      "id": "BENCH-velvet-postgres-config",
+      "project": "Velvet",
+      "domains": ["configuration", "postgres", "persistence"],
+      "keywords": ["database_url", "postgres_url", "resolver"],
+      "expectedTop": ["PAT-centralize-equivalent-environment-resolution"],
+      "expectedWithinTop5": ["RULE-readiness-must-prove-runtime-capability"]
+    },
+    {
+      "id": "BENCH-cross-app-data-ownership",
+      "project": "AI-Platform-Core",
+      "domains": ["architecture", "data-ownership", "integrations", "privacy"],
+      "keywords": ["canonical", "owner", "reference"],
+      "expectedTop": ["RULE-canonical-owner-reference-first"],
+      "expectedWithinTop5": []
+    }
+  ]
+}
