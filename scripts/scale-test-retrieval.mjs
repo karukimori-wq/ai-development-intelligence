@@ -1,0 +1,5 @@
+import { performance } from 'node:perf_hooks';
+const sizes=[1000,10000];const results=[];
+for(const n of sizes){const docs=Array.from({length:n},(_,i)=>({id:`SYN-${i}`,project:i%7===0?'Growth-Engine':'other',domains:i%11===0?['deployment','persistence']:['frontend'],text:i%997===0?'postgres production readiness database runtime reachability':'routine synthetic knowledge'}));const q=['growth-engine','deployment','persistence','postgres','readiness'];const start=performance.now();const ranked=docs.map(d=>{const hay=`${d.id} ${d.project} ${d.domains.join(' ')} ${d.text}`.toLowerCase();let score=0;for(const x of q)if(hay.includes(x))score++;return [score,d.id];}).sort((a,b)=>b[0]-a[0]).slice(0,10);const ms=performance.now()-start;results.push({entries:n,durationMs:Number(ms.toFixed(2)),topScore:ranked[0]?.[0]??0,topK:10});}
+console.log(JSON.stringify({version:1,results,note:'Synthetic CPU/local-array test for order-of-magnitude regression detection, not a production latency guarantee.'},null,2));
+if(results.some(x=>x.durationMs>2000))process.exit(1);
