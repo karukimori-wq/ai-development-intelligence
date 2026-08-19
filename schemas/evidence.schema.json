@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/karukimori-wq/ai-development-intelligence/schemas/evidence.schema.json",
+  "title": "AI Development Intelligence Evidence",
+  "type": "object",
+  "required": ["id", "kind", "summary", "observedAt", "verification"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^EVID-[A-Za-z0-9._-]+$"},
+    "kind": {"enum": ["commit", "pull_request", "issue", "test", "endpoint", "documentation", "observation", "other"]},
+    "summary": {"type": "string", "minLength": 1},
+    "repository": {"type": ["string", "null"]},
+    "commitSha": {"type": ["string", "null"]},
+    "reference": {"type": ["string", "null"]},
+    "observedAt": {"type": "string", "format": "date-time"},
+    "verification": {"enum": ["reproduced", "observed", "authoritative", "unverified"]},
+    "redacted": {"type": "boolean", "default": false},
+    "notes": {"type": "string", "default": ""}
+  },
+  "additionalProperties": false
+}
