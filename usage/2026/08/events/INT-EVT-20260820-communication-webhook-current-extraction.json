@@ -1,0 +1,14 @@
+{
+  "eventId": "INT-EVT-20260820-communication-webhook-current-extraction",
+  "taskRunId": "TASK-communication-webhook-current-code-20260820",
+  "eventType": "extraction_evaluated",
+  "occurredAt": "2026-08-20T01:19:00Z",
+  "project": "Communication-Planner",
+  "taskClass": "review",
+  "knowledgeIds": ["FAIL-webhook-identity-precedence"],
+  "evidenceIds": ["EVID-webhook-identity-precedence-20260815"],
+  "outcome": "neutral",
+  "iterationsToVerifiedResult": 1,
+  "timeToRootCauseMinutes": null,
+  "notes": "capture=no. This task demonstrates applicability rejection, not contradiction: the stored Failure accurately describes history, while current main already contains the correction."
+}
