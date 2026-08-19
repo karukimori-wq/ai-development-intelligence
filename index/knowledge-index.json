@@ -1,11 +1,19 @@
 {
-  "version": 2,
-  "updatedAt": "2026-08-20T07:10:00+09:00",
+  "version": 3,
+  "updatedAt": "2026-08-20T08:00:00+09:00",
   "entries": [
-    {"id":"PAT-production-readiness-needs-roundtrip","type":"pattern","status":"candidate","path":"knowledge/patterns/PAT-production-readiness-needs-roundtrip.md","domains":["deployment","persistence","integration-testing","production-readiness"],"projects":["Growth-Engine"]},
-    {"id":"PAT-high-consequence-actions-need-hard-gates","type":"pattern","status":"candidate","path":"knowledge/patterns/PAT-high-consequence-actions-need-hard-gates.md","domains":["safety","authorization","messaging","ai-assisted-actions"],"projects":["Communication-Planner"]},
+    {"id":"RULE-readiness-must-prove-runtime-capability","type":"rule","status":"active","path":"knowledge/rules/RULE-readiness-must-prove-runtime-capability.json","domains":["production-readiness","deployment","persistence","integrations","safety"],"projects":["Growth-Engine","Communication-Planner","Velvet"]},
     {"id":"RULE-canonical-owner-reference-first","type":"rule","status":"active","path":"knowledge/rules/RULE-canonical-owner-reference-first.md","domains":["architecture","data-ownership","integrations","privacy"],"projects":["Growth-Engine","Numeria-Studio","Communication-Planner","Velvet","AI-Platform-Core","Platform-Admin"]},
-    {"id":"RULE-secrets-never-enter-intelligence","type":"rule","status":"active","path":"knowledge/rules/RULE-secrets-never-enter-intelligence.md","domains":["security","memory","evidence"],"projects":["cross-project"]}
+    {"id":"RULE-secrets-never-enter-intelligence","type":"rule","status":"active","path":"knowledge/rules/RULE-secrets-never-enter-intelligence.md","domains":["security","memory","evidence"],"projects":["cross-project"]},
+    {"id":"FAIL-webhook-identity-precedence","type":"failure","status":"active","path":"knowledge/failures/FAIL-webhook-identity-precedence.json","domains":["webhooks","identity","communication","adapters"],"projects":["Communication-Planner"]},
+    {"id":"FAIL-cross-app-handoff-contract-drift","type":"failure","status":"active","path":"knowledge/failures/FAIL-cross-app-handoff-contract-drift.json","domains":["integration","contracts","routing","identity"],"projects":["Growth-Engine","numeria-studio"]},
+    {"id":"FAIL-static-host-asset-path-assumption","type":"failure","status":"candidate","path":"knowledge/failures/FAIL-static-host-asset-path-assumption.json","domains":["static-hosting","deployment","frontend","assets"],"projects":["numeria-studio"]},
+    {"id":"PAT-centralize-equivalent-environment-resolution","type":"pattern","status":"candidate","path":"knowledge/patterns/PAT-centralize-equivalent-environment-resolution.json","domains":["configuration","deployment","postgres","persistence"],"projects":["Velvet","Growth-Engine"]},
+    {"id":"PAT-live-side-effects-require-readiness-gate","type":"pattern","status":"active","path":"knowledge/patterns/PAT-live-side-effects-require-readiness-gate.json","domains":["integrations","safety","production-readiness","external-side-effects"],"projects":["Communication-Planner"]},
+    {"id":"PAT-derive-workflow-ids-once","type":"pattern","status":"candidate","path":"knowledge/patterns/PAT-derive-workflow-ids-once.json","domains":["workflow","identity","integration","ui-navigation"],"projects":["Growth-Engine"]},
+    {"id":"PAT-production-readiness-needs-roundtrip","type":"pattern","status":"candidate","path":"knowledge/patterns/PAT-production-readiness-needs-roundtrip.md","domains":["deployment","persistence","integration-testing","production-readiness"],"projects":["Growth-Engine"]},
+    {"id":"PAT-high-consequence-actions-need-hard-gates","type":"pattern","status":"candidate","path":"knowledge/patterns/PAT-high-consequence-actions-need-hard-gates.md","domains":["safety","authorization","messaging","ai-assisted-actions"],"projects":["Communication-Planner"]}
   ],
-  "notes": "Compact retrieval index. Project-specific memories live under memory/. Contracts remain authoritative in professional-platform-contracts."
+  "retrievalProtocol": "core/task-retrieval-protocol.md",
+  "notes": "Compact retrieval index. Read matching entries only; evidence is escalation material. Project-specific memories live under memory/. Contracts remain authoritative in professional-platform-contracts."
 }
