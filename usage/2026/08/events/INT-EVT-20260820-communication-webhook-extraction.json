@@ -1,0 +1,14 @@
+{
+  "eventId": "INT-EVT-20260820-communication-webhook-extraction",
+  "taskRunId": "TASK-communication-webhook-identity-review-20260820",
+  "eventType": "extraction_evaluated",
+  "occurredAt": "2026-08-20T01:04:00Z",
+  "project": "Communication-Planner",
+  "taskClass": "review",
+  "knowledgeIds": ["FAIL-webhook-identity-precedence"],
+  "evidenceIds": ["EVID-webhook-identity-precedence-20260815"],
+  "outcome": "neutral",
+  "iterationsToVerifiedResult": 1,
+  "timeToRootCauseMinutes": null,
+  "notes": "capture=no. The review strongly confirms the existing failure entry and its evidence, but does not add an independent observation or broader rule beyond the already captured provider-identity precedence lesson."
+}
