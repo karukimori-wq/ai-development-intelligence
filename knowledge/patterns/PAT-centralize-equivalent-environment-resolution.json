@@ -1,0 +1,18 @@
+{
+  "id": "PAT-centralize-equivalent-environment-resolution",
+  "type": "pattern",
+  "title": "Centralize equivalent environment-variable resolution",
+  "status": "candidate",
+  "summary": "When infrastructure providers may expose the same logical configuration under multiple supported variable names, resolve them once and reuse that resolver across runtime selection, migrations and readiness checks.",
+  "domains": ["configuration", "deployment", "postgres", "persistence"],
+  "projectsObserved": ["Velvet", "Growth-Engine"],
+  "applicability": ["Apps supporting Postgres across Vercel or provider integrations"],
+  "exceptions": ["Do not silently accept undocumented or unsafe aliases"],
+  "confidence": 0.86,
+  "observedCount": 2,
+  "evidence": ["EVID-velvet-db-url-resolver-20260818"],
+  "relationships": [{"type":"similar_to","targetId":"RULE-production-persistence-needs-runtime-proof"}],
+  "createdAt": "2026-08-20T00:00:00Z",
+  "lastVerifiedAt": "2026-08-20T00:00:00Z",
+  "supersededBy": null
+}
