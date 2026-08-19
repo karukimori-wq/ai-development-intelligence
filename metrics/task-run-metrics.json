@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "generated": true,
+  "aggregate": {
+    "taskRuns": 2,
+    "completeLearningLoops": 2,
+    "runsWithKnowledgeUsed": 2,
+    "runsWithKnowledgeRejected": 0,
+    "runsWithFailurePrevented": 0,
+    "runsWithRepeatFailure": 0
+  },
+  "runs": [
+    {
+      "taskRunId": "TASK-communication-webhook-identity-review-20260820",
+      "project": "Communication-Planner",
+      "taskClass": "review",
+      "eventCount": 3,
+      "retrieval": 1,
+      "used": 1,
+      "rejected": 0,
+      "prevented": 0,
+      "repeatFailure": 0,
+      "extractionEvaluated": 1,
+      "captured": 0,
+      "knowledgeRetrieved": ["FAIL-webhook-identity-precedence"],
+      "knowledgeUsed": ["FAIL-webhook-identity-precedence"],
+      "knowledgeUseRate": 1,
+      "completeLearningLoop": true
+    },
+    {
+      "taskRunId": "TASK-growth-customer-registration-review-20260820",
+      "project": "Growth-Engine",
+      "taskClass": "review",
+      "eventCount": 3,
+      "retrieval": 1,
+      "used": 1,
+      "rejected": 0,
+      "prevented": 0,
+      "repeatFailure": 0,
+      "extractionEvaluated": 1,
+      "captured": 0,
+      "knowledgeRetrieved": ["RULE-canonical-owner-reference-first"],
+      "knowledgeUsed": ["RULE-canonical-owner-reference-first"],
+      "knowledgeUseRate": 1,
+      "completeLearningLoop": true
+    }
+  ],
+  "notes": [
+    "Task-run metrics are observational. Small pilot counts do not establish causal productivity improvement.",
+    "knowledgeUseRate counts distinct retrieved vs used knowledge IDs for a task run."
+  ]
+}
