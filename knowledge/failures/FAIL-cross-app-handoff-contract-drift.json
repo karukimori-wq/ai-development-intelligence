@@ -1,0 +1,18 @@
+{
+  "id": "FAIL-cross-app-handoff-contract-drift",
+  "type": "failure",
+  "title": "Cross-app handoff URL drifted from receiving app contract",
+  "status": "active",
+  "summary": "Growth Engine constructed a Numeria handoff using an obsolete route and extra/default fields. The fix switched to the receiving app's contracted `/app/growth/start` route, propagated live workspace/user identity, and reduced the handoff to required reference fields.",
+  "domains": ["integration", "contracts", "routing", "identity"],
+  "projectsObserved": ["Growth-Engine", "numeria-studio"],
+  "applicability": ["Cross-application URL handoffs", "Reference-first integrations"],
+  "exceptions": [],
+  "confidence": 0.96,
+  "observedCount": 1,
+  "evidence": ["EVID-growth-numeria-handoff-drift-20260811"],
+  "relationships": [{"type":"supports","targetId":"RULE-reference-first-cross-app-boundaries"}],
+  "createdAt": "2026-08-20T00:00:00Z",
+  "lastVerifiedAt": "2026-08-20T00:00:00Z",
+  "supersededBy": null
+}
