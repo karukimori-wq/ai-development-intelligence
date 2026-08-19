@@ -29,6 +29,8 @@ jobs:
         run: node scripts/validate-intelligence.mjs
       - name: Validate JSON schemas
         run: node scripts/validate-schemas.mjs
+      - name: Validate immutable usage events
+        run: node scripts/validate-usage-events.mjs
       - name: Check knowledge freshness
         run: node scripts/check-staleness.mjs
       - name: Regenerate derived indexes
