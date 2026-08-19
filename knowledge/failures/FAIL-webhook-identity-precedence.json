@@ -1,0 +1,18 @@
+{
+  "id": "FAIL-webhook-identity-precedence",
+  "type": "failure",
+  "title": "Webhook identity resolution preferred source metadata over sender identity",
+  "status": "active",
+  "summary": "A provider webhook parser resolved external user identity using source metadata before the sender object, risking association with the wrong channel identity. The fix changed precedence so explicit/payload identity remains first, then sender identity, then source fallback.",
+  "domains": ["webhooks", "identity", "communication", "adapters"],
+  "projectsObserved": ["Communication-Planner"],
+  "applicability": ["Webhook adapters with overlapping sender/source identifiers"],
+  "exceptions": ["Provider-specific contracts may define a different authoritative field and should override generic fallback order explicitly"],
+  "confidence": 0.97,
+  "observedCount": 1,
+  "evidence": ["EVID-webhook-identity-precedence-20260815"],
+  "relationships": [],
+  "createdAt": "2026-08-20T00:00:00Z",
+  "lastVerifiedAt": "2026-08-20T00:00:00Z",
+  "supersededBy": null
+}
