@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/karukimori-wq/ai-development-intelligence/schemas/knowledge-entry.schema.json",
+  "title": "AI Development Intelligence Knowledge Entry",
+  "type": "object",
+  "required": ["id", "type", "title", "status", "summary", "domains", "confidence", "observedCount", "evidence", "createdAt", "lastVerifiedAt"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^(DISC|FAIL|DEC|PAT|RULE|MEM)-[A-Za-z0-9._-]+$"},
+    "type": {"enum": ["discovery", "failure", "decision", "pattern", "rule", "memory"]},
+    "title": {"type": "string", "minLength": 1},
+    "status": {"enum": ["candidate", "active", "deprecated", "superseded"]},
+    "summary": {"type": "string", "minLength": 1},
+    "domains": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "projectsObserved": {"type": "array", "items": {"type": "string"}, "uniqueItems": true, "default": []},
+    "applicability": {"type": "array", "items": {"type": "string"}, "default": []},
+    "exceptions": {"type": "array", "items": {"type": "string"}, "default": []},
+    "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+    "observedCount": {"type": "integer", "minimum": 0},
+    "evidence": {"type": "array", "items": {"type": "string", "pattern": "^EVID-[A-Za-z0-9._-]+$"}, "uniqueItems": true},
+    "relationships": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "targetId"],
+        "properties": {
+          "type": {"enum": ["supports", "contradicts", "supersedes", "derived_from", "similar_to", "applies_to"]},
+          "targetId": {"type": "string"}
+        },
+        "additionalProperties": false
+      },
+      "default": []
+    },
+    "createdAt": {"type": "string", "format": "date-time"},
+    "lastVerifiedAt": {"type": "string", "format": "date-time"},
+    "supersededBy": {"type": ["string", "null"]}
+  },
+  "additionalProperties": true
+}
