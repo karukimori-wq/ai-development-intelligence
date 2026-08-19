@@ -35,5 +35,9 @@ jobs:
         run: node scripts/check-staleness.mjs
       - name: Regenerate derived indexes
         run: node scripts/generate-indexes.mjs
-      - name: Verify generated indexes are committed
-        run: git diff --exit-code -- index/knowledge-index.json index/evidence-reverse-index.json
+      - name: Regenerate health metrics
+        env:
+          INTELLIGENCE_NOW: '2026-08-20T00:30:00.000Z'
+        run: node scripts/generate-health-metrics.mjs
+      - name: Verify generated artifacts are committed
+        run: git diff --exit-code -- index/knowledge-index.json index/evidence-reverse-index.json metrics/intelligence-health.json
