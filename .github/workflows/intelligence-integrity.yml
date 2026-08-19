@@ -31,6 +31,8 @@ jobs:
         run: node scripts/validate-schemas.mjs
       - name: Validate immutable usage events
         run: node scripts/validate-usage-events.mjs
+      - name: Run validator negative self-tests
+        run: node scripts/self-test-integrity.mjs
       - name: Check knowledge freshness
         run: node scripts/check-staleness.mjs
       - name: Regenerate derived indexes
