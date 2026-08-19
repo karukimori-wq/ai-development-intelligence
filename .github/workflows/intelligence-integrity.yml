@@ -22,8 +22,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
+          cache: npm
+      - name: Install validation dependencies
+        run: npm install --ignore-scripts --no-audit --no-fund
       - name: Validate intelligence integrity
         run: node scripts/validate-intelligence.mjs
+      - name: Validate JSON schemas
+        run: node scripts/validate-schemas.mjs
       - name: Check knowledge freshness
         run: node scripts/check-staleness.mjs
       - name: Regenerate derived indexes
