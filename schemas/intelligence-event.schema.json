@@ -6,6 +6,7 @@
   "required": ["eventId", "eventType", "occurredAt", "project", "taskClass"],
   "properties": {
     "eventId": {"type":"string","pattern":"^INT-EVT-[A-Za-z0-9._-]+$"},
+    "taskRunId": {"type":"string","pattern":"^TASK-[A-Za-z0-9._-]+$"},
     "eventType": {"enum":["retrieval","knowledge_used","knowledge_rejected","failure_prevented","repeat_failure","extraction_evaluated","knowledge_captured","contradiction_observed"]},
     "occurredAt": {"type":"string","format":"date-time"},
     "project": {"type":"string","minLength":1},
