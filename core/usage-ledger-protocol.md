@@ -17,6 +17,18 @@ For a substantial task, record events when applicable:
 
 Do not log every file read or every thought.
 
+## Canonical storage
+
+Every new event MUST be an immutable file:
+
+`usage/YYYY/MM/events/<eventId>.json`
+
+The file name must equal `<eventId>.json`, and `eventId` must be globally unique. Agents must create a new file; they must not update or overwrite an existing event.
+
+`usage/YYYY/MM/events.jsonl` is legacy/generated aggregate material only. Do not append new canonical events to it. It may be regenerated from immutable events when needed for analysis/export.
+
+This design avoids multiple agents contending on one monthly file.
+
 ## Event construction
 
 Use `schemas/intelligence-event.schema.json`.
@@ -45,10 +57,6 @@ Never infer `prevented_failure` merely because a Rule was read.
 
 Event notes must be terse and engineering-only. No secrets, credentials, connection values, customer data, raw messages, source dumps, or hidden reasoning.
 
-## File organization
-
-Append events to `usage/YYYY/MM/events.jsonl`. Keep one JSON object per line. If concurrent writers make append unsafe, create uniquely named event files and consolidate later rather than overwriting another event.
-
 ## Aggregation
 
-Metrics may be computed from ledger events, but low sample sizes must remain explicit. Do not report causal improvement until comparable tasks provide enough observations.
+Metrics and JSONL exports are derived from immutable event files. Low sample sizes must remain explicit. Do not report causal improvement until comparable tasks provide enough observations.
