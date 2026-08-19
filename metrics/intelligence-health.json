@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "measuredAt": "2026-08-20T08:30:00+09:00",
+  "inventory": {
+    "indexedKnowledgeEntries": 11,
+    "activeRules": 3,
+    "activeFailures": 2,
+    "candidateFailures": 1,
+    "activePatterns": 1,
+    "candidatePatterns": 4,
+    "connectedProjectAgentEntrypoints": 6
+  },
+  "maturity": {
+    "multiProjectRules": 2,
+    "entriesWithEvidenceRequired": true,
+    "retrievalProtocolPresent": true,
+    "extractionProtocolPresent": true,
+    "promotionPolicyPresent": true
+  },
+  "qualitySignals": {
+    "knownContradictions": 0,
+    "knownSupersededEntries": 0,
+    "staleEntries": 0,
+    "unresolvedEvidenceReferences": 0
+  },
+  "outcomeMetrics": {
+    "retrievalEvents": null,
+    "knowledgeUsedEvents": null,
+    "failuresPrevented": null,
+    "repeatFailureRate": null,
+    "meanIterationsToFix": null,
+    "meanTimeToRootCause": null,
+    "newInputTokensPerTask": null
+  },
+  "notes": [
+    "Inventory values are a Phase 2 baseline from the compact index and connected AGENTS.md entrypoints.",
+    "Outcome metrics remain null until usage events are captured; do not invent them.",
+    "Cache rate is intentionally not treated as a primary intelligence-quality metric."
+  ]
+}
