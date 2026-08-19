@@ -18,32 +18,19 @@ Do not put secrets or raw customer/user data into the fingerprint.
 
 ## 2. Read compact indexes first
 
-Read:
+Read `index/knowledge-index.json` and relevant project memory. Never begin by bulk-reading `knowledge/` or `evidence/`.
 
-1. `index/knowledge-index.json`
-2. `index/project-index.md`
-3. `memory/<project>/` only for the target project when useful
+When a local checkout is available, use the deterministic ranker to produce the initial candidate order, for example:
 
-Never begin by bulk-reading `knowledge/` or `evidence/`.
+`node scripts/rank-knowledge.mjs --project=Growth-Engine --domains=deployment,persistence --keywords=postgres,readiness`
 
-## 3. Rank candidates
+The ranking policy lives in `config/retrieval-ranking.json`.
 
-Prefer entries matching, in order:
+## 3. Ranking semantics
 
-1. active Rules matching the domain or operation
-2. active/candidate Failures matching the symptom, provider, route, or integration
-3. Patterns matching the technology or architecture
-4. project Memory for prior local decisions
+Ranking is triage, not truth. It prefers active Rules, then Failures, then Patterns; exact project/domain matches; multi-project observations; evidence; and verified knowledge. It penalizes stale/unverified knowledge and excludes rejected/superseded/subsumed entries from default ranked output.
 
-Increase priority when an entry:
-
-- was observed in the target project
-- was observed in multiple projects
-- has high confidence
-- was verified recently
-- has direct evidence from the same technology/provider
-
-Decrease priority when stale, superseded, contradicted, or only weakly analogous.
+A high score means **read this earlier**, not **apply this automatically**.
 
 ## 4. Retrieval budget
 
@@ -52,7 +39,8 @@ Default initial budget:
 - up to 3 Rules
 - up to 3 Failures
 - up to 2 Patterns
-- up to 2 project memories
+- up to 2 other/project memories
+- maximum 10 total candidates
 
 Expand only when the task remains ambiguous. The goal is to avoid loading the library into context.
 
@@ -82,18 +70,11 @@ This is a working aid, not a substitute for inspecting the target repository.
 
 ## 7. Post-work capture
 
-After meaningful work:
-
-1. identify new Discovery/Failure/Decision evidence
-2. search for an existing underlying claim
-3. add evidence instead of duplicating when possible
-4. update observation count/confidence only when supported
-5. evaluate Pattern/Rule promotion using `core/promotion-policy.md`
-6. update compact indexes
+After meaningful work, run `core/knowledge-extraction-protocol.md`, deduplicate against existing knowledge, preserve evidence/contradictions, evaluate promotion, and regenerate derived artifacts.
 
 ## Non-negotiable boundaries
 
 - Never retrieve or store secrets as intelligence.
 - Never let memory override current contracts or code evidence.
 - Never claim an old fix applies without checking the current failure surface.
-- Never treat retrieval count or cache rate as proof of better engineering outcomes.
+- Never treat ranking score, retrieval count, or cache rate as proof of better engineering outcomes.
