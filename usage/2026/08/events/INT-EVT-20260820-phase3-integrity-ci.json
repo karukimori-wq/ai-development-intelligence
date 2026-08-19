@@ -1,0 +1,13 @@
+{
+  "eventId": "INT-EVT-20260820-phase3-integrity-ci",
+  "eventType": "knowledge_captured",
+  "occurredAt": "2026-08-20T09:20:00+09:00",
+  "project": "ai-development-intelligence",
+  "taskClass": "architecture",
+  "knowledgeIds": [],
+  "evidenceIds": [],
+  "outcome": "neutral",
+  "iterationsToVerifiedResult": null,
+  "timeToRootCauseMinutes": null,
+  "notes": "Phase 3 added manifest-based integrity validation and GitHub Actions CI. No engineering outcome improvement is claimed by this event."
+}
