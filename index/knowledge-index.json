@@ -1,6 +1,11 @@
 {
-  "version": 1,
-  "updatedAt": "2026-08-20T00:00:00Z",
-  "entries": [],
-  "notes": "Phase 1 canonical lightweight index. Add one compact record per knowledge entry; do not embed full documents here."
+  "version": 2,
+  "updatedAt": "2026-08-20T07:10:00+09:00",
+  "entries": [
+    {"id":"PAT-production-readiness-needs-roundtrip","type":"pattern","status":"candidate","path":"knowledge/patterns/PAT-production-readiness-needs-roundtrip.md","domains":["deployment","persistence","integration-testing","production-readiness"],"projects":["Growth-Engine"]},
+    {"id":"PAT-high-consequence-actions-need-hard-gates","type":"pattern","status":"candidate","path":"knowledge/patterns/PAT-high-consequence-actions-need-hard-gates.md","domains":["safety","authorization","messaging","ai-assisted-actions"],"projects":["Communication-Planner"]},
+    {"id":"RULE-canonical-owner-reference-first","type":"rule","status":"active","path":"knowledge/rules/RULE-canonical-owner-reference-first.md","domains":["architecture","data-ownership","integrations","privacy"],"projects":["Growth-Engine","Numeria-Studio","Communication-Planner","Velvet","AI-Platform-Core","Platform-Admin"]},
+    {"id":"RULE-secrets-never-enter-intelligence","type":"rule","status":"active","path":"knowledge/rules/RULE-secrets-never-enter-intelligence.md","domains":["security","memory","evidence"],"projects":["cross-project"]}
+  ],
+  "notes": "Compact retrieval index. Project-specific memories live under memory/. Contracts remain authoritative in professional-platform-contracts."
 }
