@@ -25,6 +25,8 @@ For trivial edits with no meaningful engineering decision, retrieval may be skip
 
 ## Capture after meaningful work
 
+At completion of meaningful engineering work, run `core/knowledge-extraction-protocol.md`.
+
 Capture only information likely to change a future engineering decision. Classify it as one of:
 
 - discovery
@@ -32,6 +34,8 @@ Capture only information likely to change a future engineering decision. Classif
 - decision
 - pattern
 - rule
+
+A completed task does not automatically deserve a knowledge entry. Selectivity is required.
 
 Do not store raw logs, secrets, credentials, personal data, generated build output, or generic documentation that is easy to rediscover.
 
@@ -66,5 +70,10 @@ Default to the retrieval budget in `core/task-retrieval-protocol.md`. Do not bul
 - Mark stale or superseded knowledge rather than silently rewriting history.
 
 ## Completion
+
+For meaningful work, completion means both:
+
+1. the target engineering task is verified, and
+2. knowledge extraction has been evaluated, even when the correct result is `capture: no`.
 
 When changing this repository, keep indexes consistent with added knowledge and validate structured JSON against its schema where practical.
