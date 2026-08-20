@@ -1,0 +1,14 @@
+{
+  "eventId": "INT-EVT-20260820-numeria-static-assets-used",
+  "taskRunId": "TASK-numeria-static-assets-review-20260820",
+  "eventType": "knowledge_used",
+  "occurredAt": "2026-08-20T02:17:00Z",
+  "project": "numeria-studio",
+  "taskClass": "review",
+  "knowledgeIds": ["FAIL-static-host-asset-path-assumption"],
+  "evidenceIds": ["EVID-numeria-pages-relative-assets-20260713"],
+  "outcome": "helped",
+  "iterationsToVerifiedResult": 1,
+  "timeToRootCauseMinutes": null,
+  "notes": "The stored failure directly focused review on asset-path resolution. Commit 72a15f6 uses ./src/styles.css and ./src/main.js, matching the prior lesson that repository/path-prefix static hosts should not assume origin-root assets."
+}
