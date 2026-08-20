@@ -15,10 +15,10 @@ After verification, classify retrieved knowledge:
 
 - `knowledge_used` when it materially changed investigation, implementation or verification
 - `knowledge_rejected` when current evidence showed it should not apply
-- `failure_prevented` only when a known prior failure condition was concretely caught before impact
-- `repeat_failure` when a known failure recurred despite available intelligence
+- `failure_prevented` only when `core/failure-outcome-attribution.md` requirements are satisfied
+- `repeat_failure` only when the same attribution policy proves a known failure actually recurred
 
-Do not infer usefulness merely from retrieval.
+Do not infer usefulness merely from retrieval. Never manufacture prevention or recurrence events to populate metrics.
 
 ### 4. Extract
 Run `core/knowledge-extraction-protocol.md`. Record `extraction_evaluated` even when `capture: no` for substantial tasks where operational instrumentation is enabled.
@@ -39,12 +39,6 @@ Start instrumentation on the connected development repositories already carrying
 
 ## Success criteria
 
-Phase 5 succeeds when real tasks produce enough trustworthy events to answer:
-
-- which knowledge is retrieved but never useful?
-- which rules repeatedly help across projects?
-- which failures recur despite being known?
-- where does retrieval miss relevant knowledge?
-- does time-to-root-cause or iteration count improve for comparable work?
+Phase 5 succeeds when real tasks produce enough trustworthy events to answer which knowledge is retrieved but never useful, which rules repeatedly help across projects, which failures recur despite being known, where retrieval misses relevant knowledge, and whether comparable work improves over time.
 
 Do not claim model improvement from repository growth alone.
