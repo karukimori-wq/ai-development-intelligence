@@ -1,0 +1,14 @@
+{
+  "eventId": "INT-EVT-20260820-numeria-static-assets-extraction",
+  "taskRunId": "TASK-numeria-static-assets-review-20260820",
+  "eventType": "extraction_evaluated",
+  "occurredAt": "2026-08-20T02:19:00Z",
+  "project": "numeria-studio",
+  "taskClass": "review",
+  "knowledgeIds": ["FAIL-static-host-asset-path-assumption"],
+  "evidenceIds": ["EVID-numeria-pages-relative-assets-20260713"],
+  "outcome": "neutral",
+  "iterationsToVerifiedResult": 1,
+  "timeToRootCauseMinutes": null,
+  "notes": "capture=no. The review confirms the existing failure/evidence pair but adds no independent reusable insight beyond the stored static-host path lesson."
+}
