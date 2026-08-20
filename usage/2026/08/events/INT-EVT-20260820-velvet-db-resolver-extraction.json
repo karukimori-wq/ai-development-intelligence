@@ -1,0 +1,14 @@
+{
+  "eventId": "INT-EVT-20260820-velvet-db-resolver-extraction",
+  "taskRunId": "TASK-velvet-db-resolver-review-20260820",
+  "eventType": "extraction_evaluated",
+  "occurredAt": "2026-08-20T01:54:00Z",
+  "project": "Velvet",
+  "taskClass": "review",
+  "knowledgeIds": ["PAT-centralize-equivalent-environment-resolution"],
+  "evidenceIds": ["EVID-velvet-db-url-resolver-20260818"],
+  "outcome": "neutral",
+  "iterationsToVerifiedResult": 1,
+  "timeToRootCauseMinutes": null,
+  "notes": "capture=no. The review confirms the existing pattern and evidence but adds no independent reusable insight beyond the centralized equivalent-environment resolution lesson."
+}
