@@ -2,7 +2,7 @@
   "eventId": "INT-EVT-20260820-velvet-db-resolver-used",
   "taskRunId": "TASK-velvet-db-resolver-review-20260820",
   "eventType": "knowledge_used",
-  "occurredAt": "2026-08-20T02:27:00Z",
+  "occurredAt": "2026-08-20T01:52:00Z",
   "project": "Velvet",
   "taskClass": "review",
   "knowledgeIds": ["PAT-centralize-equivalent-environment-resolution"],
