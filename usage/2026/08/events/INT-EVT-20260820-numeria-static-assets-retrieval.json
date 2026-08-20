@@ -1,0 +1,14 @@
+{
+  "eventId": "INT-EVT-20260820-numeria-static-assets-retrieval",
+  "taskRunId": "TASK-numeria-static-assets-review-20260820",
+  "eventType": "retrieval",
+  "occurredAt": "2026-08-20T02:15:00Z",
+  "project": "numeria-studio",
+  "taskClass": "review",
+  "knowledgeIds": ["FAIL-static-host-asset-path-assumption"],
+  "evidenceIds": ["EVID-numeria-pages-relative-assets-20260713"],
+  "outcome": "unknown",
+  "iterationsToVerifiedResult": null,
+  "timeToRootCauseMinutes": null,
+  "notes": "Retrieved the static-host asset path failure before reviewing the GitHub Pages deployment fix."
+}
