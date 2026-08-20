@@ -1,0 +1,14 @@
+{
+  "eventId": "INT-EVT-20260820-velvet-db-resolver-used",
+  "taskRunId": "TASK-velvet-db-resolver-review-20260820",
+  "eventType": "knowledge_used",
+  "occurredAt": "2026-08-20T02:27:00Z",
+  "project": "Velvet",
+  "taskClass": "review",
+  "knowledgeIds": ["PAT-centralize-equivalent-environment-resolution"],
+  "evidenceIds": ["EVID-velvet-db-url-resolver-20260818"],
+  "outcome": "helped",
+  "iterationsToVerifiedResult": 1,
+  "timeToRootCauseMinutes": null,
+  "notes": "The pattern materially focused verification on whether equivalent database connection variables were resolved once. Commit d1d25dc introduces getDatabaseUrl() for DATABASE_URL/POSTGRES_URL and reuses it in storage mode, readiness and production assertions."
+}
