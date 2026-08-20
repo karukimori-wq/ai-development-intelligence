@@ -1,0 +1,14 @@
+{
+  "eventId": "INT-EVT-YYYYMMDD-unique",
+  "taskRunId": "TASK-project-purpose-YYYYMMDD-unique",
+  "eventType": "retrieval",
+  "occurredAt": "YYYY-MM-DDTHH:mm:ssZ",
+  "project": "project-name",
+  "taskClass": "debug",
+  "knowledgeIds": [],
+  "evidenceIds": [],
+  "outcome": "unknown",
+  "iterationsToVerifiedResult": null,
+  "timeToRootCauseMinutes": null,
+  "notes": "Observable engineering fact only."
+}
