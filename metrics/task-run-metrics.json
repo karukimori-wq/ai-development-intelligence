@@ -2,14 +2,31 @@
   "version": 1,
   "generated": true,
   "aggregate": {
-    "taskRuns": 2,
-    "completeLearningLoops": 2,
-    "runsWithKnowledgeUsed": 2,
-    "runsWithKnowledgeRejected": 0,
+    "taskRuns": 5,
+    "completeLearningLoops": 5,
+    "runsWithKnowledgeUsed": 4,
+    "runsWithKnowledgeRejected": 1,
     "runsWithFailurePrevented": 0,
     "runsWithRepeatFailure": 0
   },
   "runs": [
+    {
+      "taskRunId": "TASK-communication-webhook-current-code-20260820",
+      "project": "Communication-Planner",
+      "taskClass": "review",
+      "eventCount": 3,
+      "retrieval": 1,
+      "used": 0,
+      "rejected": 1,
+      "prevented": 0,
+      "repeatFailure": 0,
+      "extractionEvaluated": 1,
+      "captured": 0,
+      "knowledgeRetrieved": ["FAIL-webhook-identity-precedence"],
+      "knowledgeUsed": [],
+      "knowledgeUseRate": 0,
+      "completeLearningLoop": true
+    },
     {
       "taskRunId": "TASK-communication-webhook-identity-review-20260820",
       "project": "Communication-Planner",
@@ -43,10 +60,45 @@
       "knowledgeUsed": ["RULE-canonical-owner-reference-first"],
       "knowledgeUseRate": 1,
       "completeLearningLoop": true
+    },
+    {
+      "taskRunId": "TASK-numeria-static-assets-review-20260820",
+      "project": "numeria-studio",
+      "taskClass": "review",
+      "eventCount": 3,
+      "retrieval": 1,
+      "used": 1,
+      "rejected": 0,
+      "prevented": 0,
+      "repeatFailure": 0,
+      "extractionEvaluated": 1,
+      "captured": 0,
+      "knowledgeRetrieved": ["FAIL-static-host-asset-path-assumption"],
+      "knowledgeUsed": ["FAIL-static-host-asset-path-assumption"],
+      "knowledgeUseRate": 1,
+      "completeLearningLoop": true
+    },
+    {
+      "taskRunId": "TASK-velvet-db-resolver-review-20260820",
+      "project": "Velvet",
+      "taskClass": "review",
+      "eventCount": 3,
+      "retrieval": 1,
+      "used": 1,
+      "rejected": 0,
+      "prevented": 0,
+      "repeatFailure": 0,
+      "extractionEvaluated": 1,
+      "captured": 0,
+      "knowledgeRetrieved": ["PAT-centralize-equivalent-environment-resolution"],
+      "knowledgeUsed": ["PAT-centralize-equivalent-environment-resolution"],
+      "knowledgeUseRate": 1,
+      "completeLearningLoop": true
     }
   ],
   "notes": [
-    "Task-run metrics are observational. Small pilot counts do not establish causal productivity improvement.",
-    "knowledgeUseRate counts distinct retrieved vs used knowledge IDs for a task run."
+    "Task-run metrics are observational. Five pilot runs do not establish causal productivity improvement.",
+    "knowledgeUseRate counts distinct retrieved vs used knowledge IDs for a task run.",
+    "Failure prevention and recurrence remain zero because no case has yet satisfied the strict attribution policy."
   ]
 }
