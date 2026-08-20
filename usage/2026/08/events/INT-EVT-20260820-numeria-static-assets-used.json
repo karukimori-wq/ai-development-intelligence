@@ -2,7 +2,7 @@
   "eventId": "INT-EVT-20260820-numeria-static-assets-used",
   "taskRunId": "TASK-numeria-static-assets-review-20260820",
   "eventType": "knowledge_used",
-  "occurredAt": "2026-08-20T02:17:00Z",
+  "occurredAt": "2026-08-20T01:42:00Z",
   "project": "numeria-studio",
   "taskClass": "review",
   "knowledgeIds": ["FAIL-static-host-asset-path-assumption"],
