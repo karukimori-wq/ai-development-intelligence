@@ -1,10 +1,11 @@
 {
-  "version": 4,
+  "version": 5,
   "generatedFrom": "index/knowledge-manifest.json",
-  "generatedAt": "2026-08-20T09:00:00+09:00",
+  "generatedAt": "2026-08-25T00:00:00+09:00",
   "entries": [
     {"id":"FAIL-cross-app-handoff-contract-drift","type":"failure","status":"active","path":"knowledge/failures/FAIL-cross-app-handoff-contract-drift.json","domains":["integration","contracts","routing","identity"],"projects":["Growth-Engine","numeria-studio"]},
     {"id":"FAIL-static-host-asset-path-assumption","type":"failure","status":"candidate","path":"knowledge/failures/FAIL-static-host-asset-path-assumption.json","domains":["static-hosting","deployment","frontend","assets"],"projects":["numeria-studio"]},
+    {"id":"FAIL-vercel-static-output-directory-mismatch","type":"failure","status":"active","path":"knowledge/failures/FAIL-vercel-static-output-directory-mismatch.json","domains":["deployment","static-hosting","vercel","build-output"],"projects":["numeria-studio"]},
     {"id":"FAIL-webhook-identity-precedence","type":"failure","status":"active","path":"knowledge/failures/FAIL-webhook-identity-precedence.json","domains":["webhooks","identity","communication","adapters"],"projects":["Communication-Planner"]},
     {"id":"PAT-centralize-equivalent-environment-resolution","type":"pattern","status":"candidate","path":"knowledge/patterns/PAT-centralize-equivalent-environment-resolution.json","domains":["configuration","deployment","postgres","persistence"],"projects":["Velvet","Growth-Engine"]},
     {"id":"PAT-derive-workflow-ids-once","type":"pattern","status":"candidate","path":"knowledge/patterns/PAT-derive-workflow-ids-once.json","domains":["workflow","identity","integration","ui-navigation"],"projects":["Growth-Engine"]},
