@@ -68,9 +68,24 @@ Verification performed locally:
 - `git diff --check` passed.
 - Full dependency install/typecheck were not retried successfully in this environment because npm continues to target `/root/.npm`.
 
+## 2026-08-25 Adapter Readiness Summary Note
+Follow-up development added a machine-readable `summary` to `GET /api/adapters/readiness`. The response now reports `totalChannels`, `liveReadyChannels`, `blockedChannels`, `blockerCount`, and `allLiveReady` alongside the existing per-channel readiness list. This lets Platform Admin and the operator dashboard show overall provider rollout status without parsing every blocker array, while still keeping secret values out of the response.
+
+Related docs were synchronized in `docs/api-design.md`, `docs/production-adapter-readiness.md`, and `docs/operator-dashboard.md`. `tests/adapter-readiness-contracts.test.mjs` now guards the summary fields and documentation contract.
+
+Development was pushed to Communication Planner `main` through the GitHub Contents API. Latest verified remote commit: `c875ae386d5753a51e1053dcaad9f3c75a453d9c`.
+
+Verification performed locally:
+
+- Dependency-free contract suites: 50 tests passed, 0 failed.
+- `git diff --check` passed.
+- Normal `git push origin HEAD:main` still failed due missing GitHub HTTPS credentials, so GitHub Contents API was used.
+- Full dependency install/typecheck were not retried successfully in this environment because npm continues to target `/root/.npm`.
+
 ## Evidence
 - https://github.com/karukimori-wq/Communication-Planner/blob/main/docs/safety-rules.md
 - https://github.com/karukimori-wq/Communication-Planner/commit/4ee248f67ef552b2957db4d52058f1ba5ed7659a
 - https://github.com/karukimori-wq/Communication-Planner/commit/d4713dbdb829515c8a7ca2da21e9c11b9e15b60c
 - https://github.com/karukimori-wq/Communication-Planner/commit/ceb412be133772ce927eedc808831d72e652cb00
 - https://github.com/karukimori-wq/Communication-Planner/commit/1697c1dfa108f4777696bdd5447629836421cfbe
+- https://github.com/karukimori-wq/Communication-Planner/commit/c875ae386d5753a51e1053dcaad9f3c75a453d9c
