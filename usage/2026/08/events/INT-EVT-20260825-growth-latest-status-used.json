@@ -1,0 +1,21 @@
+{
+  "eventId": "INT-EVT-20260825-growth-latest-status-used",
+  "taskRunId": "TASK-Growth-Engine-latest-status-20260825-a1",
+  "eventType": "knowledge_used",
+  "occurredAt": "2026-08-24T15:42:14Z",
+  "project": "Growth-Engine",
+  "taskClass": "review",
+  "knowledgeIds": [
+    "RULE-readiness-must-prove-runtime-capability",
+    "PAT-production-readiness-needs-roundtrip",
+    "RULE-canonical-owner-reference-first",
+    "RULE-secrets-never-enter-intelligence"
+  ],
+  "evidenceIds": [
+    "EVID-growth-production-persistence-e2e-20260818"
+  ],
+  "outcome": "helped",
+  "iterationsToVerifiedResult": 1,
+  "timeToRootCauseMinutes": null,
+  "notes": "The retrieved intelligence determined the verification standard, preserved Growth Engine as canonical Customer/Reservation owner, and enforced redaction while recording the latest project status."
+}
