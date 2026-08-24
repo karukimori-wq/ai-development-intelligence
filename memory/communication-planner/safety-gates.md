@@ -45,7 +45,20 @@ Verification performed locally:
 - `git diff --check` passed.
 - Full dependency install/typecheck were not retried successfully in this environment because npm continues to target `/root/.npm`.
 
+
+## 2026-08-24 Provider Verification Rollout Docs Note
+Follow-up development synchronized production rollout and operator-facing guidance with the provider verification gate. `docs/production-deployment-runbook.md` now records the current GitHub main state, the scratch dependency limitation, and the six provider verification flags as live E2E prerequisites. `docs/operator-dashboard.md`, `docs/channel-adapters.md`, and `docs/oss-adoption.md` now keep `providerVerificationRequirements` and provider verification blockers visible to operators and future implementers.
+
+Development was pushed to Communication Planner `main` through the GitHub Contents API. Latest verified remote commit: `ceb412be133772ce927eedc808831d72e652cb00`.
+
+Verification performed locally:
+
+- Dependency-free contract suites: 49 tests passed, 0 failed.
+- `git diff --check` passed.
+- Full dependency install/typecheck were not retried successfully in this environment because npm continues to target `/root/.npm`.
+
 ## Evidence
 - https://github.com/karukimori-wq/Communication-Planner/blob/main/docs/safety-rules.md
 - https://github.com/karukimori-wq/Communication-Planner/commit/4ee248f67ef552b2957db4d52058f1ba5ed7659a
 - https://github.com/karukimori-wq/Communication-Planner/commit/d4713dbdb829515c8a7ca2da21e9c11b9e15b60c
+- https://github.com/karukimori-wq/Communication-Planner/commit/ceb412be133772ce927eedc808831d72e652cb00
