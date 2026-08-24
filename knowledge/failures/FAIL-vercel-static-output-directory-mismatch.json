@@ -1,0 +1,18 @@
+{
+  "id": "FAIL-vercel-static-output-directory-mismatch",
+  "type": "failure",
+  "title": "Vercel static deployment expected the wrong output directory",
+  "status": "active",
+  "summary": "Numeria Studio's build command produced `dist/`, but Vercel expected `public`, causing deployment failure after a successful local build step. Static Vercel apps should explicitly set `vercel.json#outputDirectory` when the build artifact directory differs from the project default or Vercel project setting.",
+  "domains": ["deployment", "static-hosting", "vercel", "build-output"],
+  "projectsObserved": ["numeria-studio"],
+  "applicability": ["Vercel static deployments", "custom static build scripts", "projects where build output is `dist/`"],
+  "exceptions": ["Not applicable when the framework adapter determines output automatically", "Not applicable when Vercel project settings already match the generated output directory"],
+  "confidence": 0.9,
+  "observedCount": 1,
+  "evidence": ["EVID-numeria-vercel-output-directory-20260817"],
+  "relationships": ["FAIL-static-host-asset-path-assumption"],
+  "createdAt": "2026-08-25T00:00:00+09:00",
+  "lastVerifiedAt": "2026-08-25T00:00:00+09:00",
+  "supersededBy": null
+}
