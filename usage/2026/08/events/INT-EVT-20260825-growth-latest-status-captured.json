@@ -1,0 +1,18 @@
+{
+  "eventId": "INT-EVT-20260825-growth-latest-status-captured",
+  "taskRunId": "TASK-Growth-Engine-latest-status-20260825-a1",
+  "eventType": "knowledge_captured",
+  "occurredAt": "2026-08-24T15:42:14Z",
+  "project": "Growth-Engine",
+  "taskClass": "review",
+  "knowledgeIds": [
+    "PAT-production-readiness-needs-roundtrip"
+  ],
+  "evidenceIds": [
+    "EVID-growth-production-persistence-e2e-20260818"
+  ],
+  "outcome": "helped",
+  "iterationsToVerifiedResult": 1,
+  "timeToRootCauseMinutes": null,
+  "notes": "Recorded current Growth Engine main status, missing manual reservation route, redacted production persistence evidence, and updated the project memory index."
+}
