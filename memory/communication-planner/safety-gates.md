@@ -82,6 +82,19 @@ Verification performed locally:
 - Normal `git push origin HEAD:main` still failed due missing GitHub HTTPS credentials, so GitHub Contents API was used.
 - Full dependency install/typecheck were not retried successfully in this environment because npm continues to target `/root/.npm`.
 
+## 2026-08-25 Contract Status Readiness Summary Note
+Follow-up development propagated adapter readiness summary into `GET /contracts/status` as `adapterReadinessSummary`, including total channels, live-ready channels, blocked channels, blocker count, and all-live-ready state. This lets Platform Admin obtain contract status and provider readiness rollup from its primary status endpoint while continuing to avoid secret values.
+
+Related docs were synchronized in `docs/api-design.md` and `docs/platform-admin-registration.md`. `tests/platform-admin-registration.test.mjs` now guards the `adapterReadinessSummary`, `blockedChannels`, and `blockerCount` contract.
+
+Development was pushed to Communication Planner `main` through the GitHub Contents API. Latest verified remote commit: `6d043d744cd031f0db65734979b4b26f9d465de5`.
+
+Verification performed locally:
+
+- Dependency-free contract suites: 50 tests passed, 0 failed.
+- `git diff --check` passed.
+- Full dependency install/typecheck were not retried successfully in this environment because npm continues to target `/root/.npm`.
+
 ## Evidence
 - https://github.com/karukimori-wq/Communication-Planner/blob/main/docs/safety-rules.md
 - https://github.com/karukimori-wq/Communication-Planner/commit/4ee248f67ef552b2957db4d52058f1ba5ed7659a
@@ -89,3 +102,4 @@ Verification performed locally:
 - https://github.com/karukimori-wq/Communication-Planner/commit/ceb412be133772ce927eedc808831d72e652cb00
 - https://github.com/karukimori-wq/Communication-Planner/commit/1697c1dfa108f4777696bdd5447629836421cfbe
 - https://github.com/karukimori-wq/Communication-Planner/commit/c875ae386d5753a51e1053dcaad9f3c75a453d9c
+- https://github.com/karukimori-wq/Communication-Planner/commit/6d043d744cd031f0db65734979b4b26f9d465de5
