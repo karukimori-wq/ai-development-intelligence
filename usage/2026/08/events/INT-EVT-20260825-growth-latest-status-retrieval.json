@@ -1,0 +1,22 @@
+{
+  "eventId": "INT-EVT-20260825-growth-latest-status-retrieval",
+  "taskRunId": "TASK-Growth-Engine-latest-status-20260825-a1",
+  "eventType": "retrieval",
+  "occurredAt": "2026-08-24T15:42:14Z",
+  "project": "Growth-Engine",
+  "taskClass": "review",
+  "knowledgeIds": [
+    "RULE-readiness-must-prove-runtime-capability",
+    "PAT-production-readiness-needs-roundtrip",
+    "RULE-canonical-owner-reference-first",
+    "RULE-secrets-never-enter-intelligence"
+  ],
+  "evidenceIds": [
+    "EVID-growth-runtime-health-readiness-20260817",
+    "EVID-growth-derived-id-consistency-20260818"
+  ],
+  "outcome": "unknown",
+  "iterationsToVerifiedResult": null,
+  "timeToRootCauseMinutes": null,
+  "notes": "Retrieved bounded Growth Engine persistence, runtime-readiness, canonical ownership, workflow identity, and secret-handling intelligence before reviewing current main and production evidence."
+}
