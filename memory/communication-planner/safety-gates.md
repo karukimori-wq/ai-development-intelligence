@@ -95,6 +95,19 @@ Verification performed locally:
 - `git diff --check` passed.
 - Full dependency install/typecheck were not retried successfully in this environment because npm continues to target `/root/.npm`.
 
+## 2026-08-25 Post-MVP Readiness Surface Sync Note
+Follow-up development synchronized `docs/post-mvp-roadmap.md` with the current readiness contract. The roadmap now names `/contracts/status` as the primary Platform Admin readiness surface with `adapterReadinessSummary`, keeps `/api/adapters/readiness` as the per-channel blocker drilldown surface, and makes provider-specific inbound/outbound verification an explicit release gate before live delivery.
+
+`tests/platform-admin-registration.test.mjs` now guards those roadmap claims so the Platform Admin readiness surface contract cannot drift away from implementation and registration docs.
+
+Development was pushed to Communication Planner `main` through the GitHub Contents API. Latest verified remote commit: `18b26608df9abcbd4ffec760c2fa2e5073699ee4`.
+
+Verification performed locally:
+
+- Dependency-free contract suites: 50 tests passed, 0 failed.
+- `git diff --check` passed.
+- Full dependency install/typecheck were not retried successfully in this environment because npm continues to target `/root/.npm`.
+
 ## Evidence
 - https://github.com/karukimori-wq/Communication-Planner/blob/main/docs/safety-rules.md
 - https://github.com/karukimori-wq/Communication-Planner/commit/4ee248f67ef552b2957db4d52058f1ba5ed7659a
@@ -103,3 +116,4 @@ Verification performed locally:
 - https://github.com/karukimori-wq/Communication-Planner/commit/1697c1dfa108f4777696bdd5447629836421cfbe
 - https://github.com/karukimori-wq/Communication-Planner/commit/c875ae386d5753a51e1053dcaad9f3c75a453d9c
 - https://github.com/karukimori-wq/Communication-Planner/commit/6d043d744cd031f0db65734979b4b26f9d465de5
+- https://github.com/karukimori-wq/Communication-Planner/commit/18b26608df9abcbd4ffec760c2fa2e5073699ee4
