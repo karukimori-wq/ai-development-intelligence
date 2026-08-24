@@ -34,6 +34,18 @@ Verification performed locally:
 - `git diff --check` passed.
 - Full dependency install still failed because npm attempted to create `/root/.npm`; therefore full `npm test`, dependency-backed tests, and typecheck were not completed in this scratch environment.
 
+## 2026-08-24 Provider Verification Env Sync Note
+Follow-up development synchronized the provider verification gate with operator-facing configuration and contracts. `.env.example` now includes disabled defaults for all six provider verification flags, `docs/api-design.md` and `docs/safety-rules.md` explicitly require provider-specific inbound/outbound verification before live delivery, and endpoint contract metadata now mentions provider verification as part of the live-send blocker set.
+
+Development was pushed to Communication Planner `main` through the GitHub Contents API. Latest verified remote commit: `d4713dbdb829515c8a7ca2da21e9c11b9e15b60c`.
+
+Verification performed locally:
+
+- Dependency-free contract suites: 48 tests passed, 0 failed.
+- `git diff --check` passed.
+- Full dependency install/typecheck were not retried successfully in this environment because npm continues to target `/root/.npm`.
+
 ## Evidence
 - https://github.com/karukimori-wq/Communication-Planner/blob/main/docs/safety-rules.md
 - https://github.com/karukimori-wq/Communication-Planner/commit/4ee248f67ef552b2957db4d52058f1ba5ed7659a
+- https://github.com/karukimori-wq/Communication-Planner/commit/d4713dbdb829515c8a7ca2da21e9c11b9e15b60c
