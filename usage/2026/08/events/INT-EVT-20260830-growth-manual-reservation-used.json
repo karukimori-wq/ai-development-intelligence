@@ -1,0 +1,18 @@
+{
+  "eventId": "INT-EVT-20260830-growth-manual-reservation-used",
+  "taskRunId": "TASK-Growth-Engine-manual-reservation-20260830-a1",
+  "eventType": "knowledge_used",
+  "occurredAt": "2026-08-30T03:15:42Z",
+  "project": "Growth-Engine",
+  "taskClass": "build",
+  "knowledgeIds": [
+    "RULE-readiness-must-prove-runtime-capability",
+    "RULE-canonical-owner-reference-first",
+    "RULE-secrets-never-enter-intelligence"
+  ],
+  "evidenceIds": [],
+  "outcome": "helped",
+  "iterationsToVerifiedResult": 1,
+  "timeToRootCauseMinutes": null,
+  "notes": "The implementation persisted Reservation through the canonical Growth Repository with Customer references only, avoided secret handling, and was verified by typecheck, Next.js build, and OpenNext Cloudflare build."
+}

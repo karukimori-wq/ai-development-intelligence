@@ -4,12 +4,12 @@
 - status: active
 - project: karukimori-wq/Growth-Engine
 - domains: customer-master, reservations, persistence, business-ui, production-readiness
-- lastVerifiedAt: 2026-08-25
-- sourceHead: c12c68f9a84b02d65fdc246b99041728db06d920
+- lastVerifiedAt: 2026-08-30
+- sourceHead: e571b584ffc8b023371ef00deeb1e0e55257fd2c
 
 ## Current implementation state
 
-The current `main` head is `c12c68f` (`Add professional app switcher to business sidebar`).
+The current `main` head is `e571b58` (`Add owner-side reservation creation flow`).
 
 Recent verified development includes:
 
@@ -17,14 +17,19 @@ Recent verified development includes:
 - `288a210`: added `/app/business/customers/new`; the Server Action creates the canonical Growth Engine Customer, publishes `growth.customer.created.v1`, records an audit event, and redirects to the Customer detail.
 - `85efdd2`: changed the Business home to use repository-backed reservations and business metrics instead of fixture reservation data, and unified it on the shared Business sidebar.
 - `c12c68f`: added a Professional App switcher to the Business sidebar.
+- Cloudflare Workers Production and D1 are the active production baseline. Postgres remains an optional rollback/source-migration path.
+- `e571b58`: added `/app/business/reservations/new`; an owner can create a D1-backed Reservation for an existing active Customer.
+- Reservation creation is reachable from the reservation list, Customer detail, and repeat candidate list. Customer detail preselects the Customer reference.
+- The flow calculates the end time from the canonical Product duration, publishes `growth.reservation.created.v1`, records an audit event, and redirects to Reservation detail.
+- Stale Vercel/Postgres runtime URLs and launch-readiness copy were aligned to the Cloudflare Workers/D1 production baseline.
 
-The current tree has Customer registration and reservation list/detail routes. It does not yet contain `/app/business/reservations/new`.
+Verification for `e571b58` passed `npm run typecheck`, `npm run build`, and `npm run cf:build`. The OpenNext build includes `/app/business/reservations/new`.
 
 ## Production verification state
 
 The production persistence and external pilot checks were verified through the real user flow:
 
-- Postgres repository configured and reachable.
+- Cloudflare D1 repository configured and reachable.
 - Database-backed persistence ready.
 - External pilot readiness reported ready with no issues.
 - A public booking persisted into the owner Business reservation list and its detail page opened.
@@ -46,12 +51,12 @@ Growth Engine remains authoritative for Customer and Reservation. Professional S
 
 ## Recommended reconnect point
 
-Continue from current `main` and implement the missing manual reservation creation path. The natural sequence is:
+Continue from current `main` and improve the post-reservation Business workflow. The natural sequence is:
 
-1. add `/app/business/reservations/new`;
-2. allow Customer detail to open reservation creation with the Customer preselected;
-3. keep creation workspace-scoped and persisted by the Growth Repository;
-4. verify list/detail visibility and then perform reference-only Numeria Studio handoff.
+1. add workspace-scoped Reservation status changes while preserving D1 persistence;
+2. turn follow-up, repeat, and referral candidates into trackable Growth Engine records;
+3. improve the public-booking-to-Business confirmation and next-action UX;
+4. keep Numeria Studio, Velvet, Communication Planner, and SNS Planner integrations reference-only.
 
 ## Sensitive-data review
 

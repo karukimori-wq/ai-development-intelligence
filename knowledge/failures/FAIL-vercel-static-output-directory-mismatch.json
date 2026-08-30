@@ -11,7 +11,9 @@
   "confidence": 0.9,
   "observedCount": 1,
   "evidence": ["EVID-numeria-vercel-output-directory-20260817"],
-  "relationships": ["FAIL-static-host-asset-path-assumption"],
+  "relationships": [
+    {"type": "similar_to", "targetId": "FAIL-static-host-asset-path-assumption"}
+  ],
   "createdAt": "2026-08-25T00:00:00+09:00",
   "lastVerifiedAt": "2026-08-25T00:00:00+09:00",
   "supersededBy": null

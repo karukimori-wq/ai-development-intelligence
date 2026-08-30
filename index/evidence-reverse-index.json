@@ -3,12 +3,31 @@
   "generatedFrom": "index/knowledge-manifest.json",
   "generatedAt": "2026-08-20T09:00:00+09:00",
   "evidence": {
-    "EVID-communication-live-send-gates-20260818": ["PAT-live-side-effects-require-readiness-gate","RULE-readiness-must-prove-runtime-capability"],
-    "EVID-growth-derived-id-consistency-20260818": ["PAT-derive-workflow-ids-once"],
-    "EVID-growth-numeria-handoff-drift-20260811": ["FAIL-cross-app-handoff-contract-drift"],
-    "EVID-growth-runtime-health-readiness-20260817": ["RULE-readiness-must-prove-runtime-capability"],
-    "EVID-numeria-pages-relative-assets-20260713": ["FAIL-static-host-asset-path-assumption"],
-    "EVID-velvet-db-url-resolver-20260818": ["PAT-centralize-equivalent-environment-resolution","RULE-readiness-must-prove-runtime-capability"],
-    "EVID-webhook-identity-precedence-20260815": ["FAIL-webhook-identity-precedence"]
+    "EVID-growth-runtime-health-readiness-20260817": [
+      "RULE-readiness-must-prove-runtime-capability"
+    ],
+    "EVID-communication-live-send-gates-20260818": [
+      "PAT-live-side-effects-require-readiness-gate",
+      "RULE-readiness-must-prove-runtime-capability"
+    ],
+    "EVID-velvet-db-url-resolver-20260818": [
+      "PAT-centralize-equivalent-environment-resolution",
+      "RULE-readiness-must-prove-runtime-capability"
+    ],
+    "EVID-webhook-identity-precedence-20260815": [
+      "FAIL-webhook-identity-precedence"
+    ],
+    "EVID-growth-numeria-handoff-drift-20260811": [
+      "FAIL-cross-app-handoff-contract-drift"
+    ],
+    "EVID-numeria-pages-relative-assets-20260713": [
+      "FAIL-static-host-asset-path-assumption"
+    ],
+    "EVID-numeria-vercel-output-directory-20260817": [
+      "FAIL-vercel-static-output-directory-mismatch"
+    ],
+    "EVID-growth-derived-id-consistency-20260818": [
+      "PAT-derive-workflow-ids-once"
+    ]
   }
 }

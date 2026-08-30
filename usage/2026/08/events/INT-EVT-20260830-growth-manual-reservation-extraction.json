@@ -1,0 +1,16 @@
+{
+  "eventId": "INT-EVT-20260830-growth-manual-reservation-extraction",
+  "taskRunId": "TASK-Growth-Engine-manual-reservation-20260830-a1",
+  "eventType": "extraction_evaluated",
+  "occurredAt": "2026-08-30T03:15:42Z",
+  "project": "Growth-Engine",
+  "taskClass": "build",
+  "knowledgeIds": [
+    "RULE-canonical-owner-reference-first"
+  ],
+  "evidenceIds": [],
+  "outcome": "helped",
+  "iterationsToVerifiedResult": 1,
+  "timeToRootCauseMinutes": null,
+  "notes": "Capture evaluated yes for Growth Engine project memory. No new reusable Rule or Pattern was created because existing canonical ownership and runtime verification knowledge already covered the engineering decisions."
+}

@@ -1,0 +1,19 @@
+{
+  "eventId": "INT-EVT-20260830-growth-manual-reservation-retrieval",
+  "taskRunId": "TASK-Growth-Engine-manual-reservation-20260830-a1",
+  "eventType": "retrieval",
+  "occurredAt": "2026-08-30T03:15:42Z",
+  "project": "Growth-Engine",
+  "taskClass": "build",
+  "knowledgeIds": [
+    "RULE-readiness-must-prove-runtime-capability",
+    "FAIL-cross-app-handoff-contract-drift",
+    "RULE-canonical-owner-reference-first",
+    "RULE-secrets-never-enter-intelligence"
+  ],
+  "evidenceIds": [],
+  "outcome": "unknown",
+  "iterationsToVerifiedResult": null,
+  "timeToRootCauseMinutes": null,
+  "notes": "Retrieved bounded Growth Engine UI, D1 persistence, canonical ownership, cross-app reference, and secret-handling intelligence before implementing owner-side reservation creation."
+}
