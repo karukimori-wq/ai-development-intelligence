@@ -4,7 +4,7 @@
 - status: active
 - project: karukimori-wq/Growth-Engine
 - domains: customer-master, reservations, persistence, business-ui, production-readiness
-- lastVerifiedAt: 2026-08-30
+- lastVerifiedAt: 2026-09-01
 - sourceHead: e571b584ffc8b023371ef00deeb1e0e55257fd2c
 
 ## Current implementation state
@@ -35,6 +35,11 @@ The production persistence and external pilot checks were verified through the r
 - A public booking persisted into the owner Business reservation list and its detail page opened.
 - Owner-protected Customer/Reservation roundtrip returned `roundtripReady: true`.
 - Unauthenticated Business APIs retained their authentication-required behavior.
+- Cloudflare Production Workflow for `e571b58` completed Green on 2026-09-01.
+- Production `/health` returned HTTP 200; `/api/persistence/status` reported `status: success`, `repositoryDriver: d1`, `d1Configured: true`, `d1Reachable: true`, and `databaseBackedPersistenceReady: true`.
+- Production `/api/persistence/preflight` reported `status: success`, `repositoryDriver: d1`, `databaseBackedPersistenceReady: true`, and no issues.
+- Production external-pilot readiness and MVP-final readiness both returned HTTP 200 with `status: ready`, zero warnings/errors, and no issues.
+- `/app/business/reservations/new` is deployed behind the expected owner sign-in redirect.
 
 Evidence: `EVID-growth-production-persistence-e2e-20260818`.
 
