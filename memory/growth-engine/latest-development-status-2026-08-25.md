@@ -4,12 +4,12 @@
 - status: active
 - project: karukimori-wq/Growth-Engine
 - domains: customer-master, reservations, persistence, business-ui, production-readiness
-- lastVerifiedAt: 2026-09-01
-- sourceHead: e571b584ffc8b023371ef00deeb1e0e55257fd2c
+- lastVerifiedAt: 2026-09-02
+- sourceHead: 3ff5c9e08c7614d9d377892e7f64cf45e396c8e3
 
 ## Current implementation state
 
-The current `main` head is `e571b58` (`Add owner-side reservation creation flow`).
+The current `main` head is `3ff5c9e` (`Prepare Business plan contract boundaries`).
 
 Recent verified development includes:
 
@@ -24,6 +24,10 @@ Recent verified development includes:
 - Stale Vercel/Postgres runtime URLs and launch-readiness copy were aligned to the Cloudflare Workers/D1 production baseline.
 
 Verification for `e571b58` passed `npm run typecheck`, `npm run build`, and `npm run cf:build`. The OpenNext build includes `/app/business/reservations/new`.
+
+Business plan preparation at `3ff5c9e` adopts the canonical `PlanId` values from professional-platform-contracts `4a1f479`: `free`, `pro`, and `business`. Business remains `not_offered`; the `business.cross_app.flow` feature gate defaults off, public Business entry visibility is false, and access is fail-closed until the Business Plan is explicitly released. Contract metadata exposes this non-sensitive preparation state.
+
+This preparation does not add Business product functionality, a public purchase route, a D1 migration, or a new Business database record. Contract tests prove Free and Pro cannot pass the Business gate and distinguish the professional's SaaS subscription from Customer Payment/Sales owned by Growth Engine. Verification passed professional-platform-contracts tests (21), Growth Engine contract tests (2), `npm run typecheck`, `npm run build`, and `npm run cf:build`.
 
 ## Production verification state
 
@@ -45,7 +49,7 @@ Evidence: `EVID-growth-production-persistence-e2e-20260818`.
 
 ## Source-of-truth boundary
 
-Growth Engine remains authoritative for Customer and Reservation. Professional Studio handoffs should carry references rather than copying the full Customer master or internal payment/sales state.
+Growth Engine remains authoritative for Customer, Reservation, Customer Payment, and Sales. SaaS subscription billing for Free/Pro/Business is a separate entitlement concern. Professional Studio handoffs should carry references rather than copying the full Customer master or internal payment/sales state.
 
 ## Relevant reusable intelligence
 
@@ -56,12 +60,7 @@ Growth Engine remains authoritative for Customer and Reservation. Professional S
 
 ## Recommended reconnect point
 
-Continue from current `main` and improve the post-reservation Business workflow. The natural sequence is:
-
-1. add workspace-scoped Reservation status changes while preserving D1 persistence;
-2. turn follow-up, repeat, and referral candidates into trackable Growth Engine records;
-3. improve the public-booking-to-Business confirmation and next-action UX;
-4. keep Numeria Studio, Velvet, Communication Planner, and SNS Planner integrations reference-only.
+Do not begin Business product implementation until Numeria Studio and Velvet Free/Pro are released and an explicit Business release decision changes the formal offering state. At that point, integrate the real subscription/entitlement provider with `business.cross_app.flow`, preserve reference-only cross-app boundaries, and re-run the full Cloudflare/D1 verification story.
 
 ## Sensitive-data review
 

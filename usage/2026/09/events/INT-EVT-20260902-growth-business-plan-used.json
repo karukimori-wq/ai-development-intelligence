@@ -1,0 +1,19 @@
+{
+  "eventId": "INT-EVT-20260902-growth-business-plan-used",
+  "taskRunId": "TASK-Growth-Engine-business-plan-prep-20260902-a1",
+  "eventType": "knowledge_used",
+  "occurredAt": "2026-09-02T22:19:44Z",
+  "project": "Growth-Engine",
+  "taskClass": "integrate",
+  "knowledgeIds": [
+    "RULE-readiness-must-prove-runtime-capability",
+    "RULE-canonical-owner-reference-first",
+    "FAIL-cross-app-handoff-contract-drift",
+    "RULE-secrets-never-enter-intelligence"
+  ],
+  "evidenceIds": [],
+  "outcome": "helped",
+  "iterationsToVerifiedResult": 1,
+  "timeToRootCauseMinutes": null,
+  "notes": "The implementation adopted the exact shared PlanId and business.cross_app.flow names, kept Business unavailable by default, preserved Growth Engine Customer/Reservation/Customer Payment/Sales ownership, avoided secret handling, and passed contract, type, Next.js, and OpenNext Cloudflare verification."
+}

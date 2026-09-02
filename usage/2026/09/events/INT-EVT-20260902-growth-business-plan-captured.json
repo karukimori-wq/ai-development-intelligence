@@ -1,0 +1,14 @@
+{
+  "eventId": "INT-EVT-20260902-growth-business-plan-captured",
+  "taskRunId": "TASK-Growth-Engine-business-plan-prep-20260902-a1",
+  "eventType": "knowledge_captured",
+  "occurredAt": "2026-09-02T22:19:44Z",
+  "project": "Growth-Engine",
+  "taskClass": "integrate",
+  "knowledgeIds": [],
+  "evidenceIds": [],
+  "outcome": "helped",
+  "iterationsToVerifiedResult": 1,
+  "timeToRootCauseMinutes": null,
+  "notes": "Updated Growth Engine project memory with canonical PlanId adoption, Business not_offered state, fail-closed feature gate, SaaS subscription versus Customer Payment boundary, verified build results, and current main commit."
+}
