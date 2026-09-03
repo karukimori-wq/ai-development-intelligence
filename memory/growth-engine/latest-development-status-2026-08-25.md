@@ -5,11 +5,11 @@
 - project: karukimori-wq/Growth-Engine
 - domains: customer-master, reservations, persistence, business-ui, production-readiness
 - lastVerifiedAt: 2026-09-03
-- sourceHead: 7c2fc19ba943b0986f883f3d8a55e1829ecd7ad8
+- sourceHead: 22906220a348ce0bdfb671dc69c087bb841d8db4
 
 ## Current implementation state
 
-The current `main` head is `7c2fc19` (`Hide unavailable Business entry points`).
+The current `main` head is `2290622` (`Lock Business API access boundaries`).
 
 Recent verified development includes:
 
@@ -30,6 +30,8 @@ Business plan preparation at `3ff5c9e` adopts the canonical `PlanId` values from
 This preparation does not add Business product functionality, a public purchase route, a D1 migration, or a new Business database record. Contract tests prove Free and Pro cannot pass the Business gate and distinguish the professional's SaaS subscription from Customer Payment/Sales owned by Growth Engine. Verification passed professional-platform-contracts tests (21), Growth Engine contract tests (2), `npm run typecheck`, `npm run build`, and `npm run cf:build`.
 
 A follow-up contract compliance audit found that the unauthenticated Professional App surface still rendered Business navigation despite `businessOfferingStatus: not_offered`. Commit `7c2fc19` connects that surface to the offering contract, hides Business navigation/admin links/home CTA while unavailable, and keeps direct owner-protected internal pilot routes unchanged. No Business feature, D1 schema, persistence, payment, sales, or cross-app API behavior was added. Growth Engine contract tests (2), typecheck, Next.js build, and OpenNext Cloudflare build all passed. Cloudflare Production Workflow for `7c2fc19` was user-confirmed Green and production route verification passed on 2026-09-03.
+
+A second contract-only audit at `2290622` locks the current owner Business API inventory to the shared authenticated, active-user, Business-plan and workspace resolver. It also clarifies that future cross-app Business APIs must combine canonical Business entitlement, offering availability and `business.cross_app.flow`, fail closed on missing state, and keep the existing Velvet Customer integration from becoming a Business entitlement bypass. README positioning now says Business is not publicly offered. No Business feature, runtime API behavior, D1 schema, persistence or Production configuration changed. Growth Engine contract tests (4), typecheck, Next.js build and OpenNext Cloudflare build passed locally. Cloudflare Production Workflow was not yet observed for this commit at capture time.
 
 ## Production verification state
 
