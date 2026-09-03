@@ -5,11 +5,11 @@
 - project: karukimori-wq/Growth-Engine
 - domains: customer-master, reservations, persistence, business-ui, production-readiness
 - lastVerifiedAt: 2026-09-03
-- sourceHead: 3ff5c9e08c7614d9d377892e7f64cf45e396c8e3
+- sourceHead: 7c2fc19ba943b0986f883f3d8a55e1829ecd7ad8
 
 ## Current implementation state
 
-The current `main` head is `3ff5c9e` (`Prepare Business plan contract boundaries`).
+The current `main` head is `7c2fc19` (`Hide unavailable Business entry points`).
 
 Recent verified development includes:
 
@@ -28,6 +28,8 @@ Verification for `e571b58` passed `npm run typecheck`, `npm run build`, and `npm
 Business plan preparation at `3ff5c9e` adopts the canonical `PlanId` values from professional-platform-contracts `4a1f479`: `free`, `pro`, and `business`. Business remains `not_offered`; the `business.cross_app.flow` feature gate defaults off, public Business entry visibility is false, and access is fail-closed until the Business Plan is explicitly released. Contract metadata exposes this non-sensitive preparation state.
 
 This preparation does not add Business product functionality, a public purchase route, a D1 migration, or a new Business database record. Contract tests prove Free and Pro cannot pass the Business gate and distinguish the professional's SaaS subscription from Customer Payment/Sales owned by Growth Engine. Verification passed professional-platform-contracts tests (21), Growth Engine contract tests (2), `npm run typecheck`, `npm run build`, and `npm run cf:build`.
+
+A follow-up contract compliance audit found that the unauthenticated Professional App surface still rendered Business navigation despite `businessOfferingStatus: not_offered`. Commit `7c2fc19` connects that surface to the offering contract, hides Business navigation/admin links/home CTA while unavailable, and keeps direct owner-protected internal pilot routes unchanged. No Business feature, D1 schema, persistence, payment, sales, or cross-app API behavior was added. Growth Engine contract tests (2), typecheck, Next.js build, and OpenNext Cloudflare build all passed. Production deployment is pending the manual Cloudflare Production workflow.
 
 ## Production verification state
 
