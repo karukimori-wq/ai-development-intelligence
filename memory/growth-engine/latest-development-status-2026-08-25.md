@@ -4,7 +4,7 @@
 - status: active
 - project: karukimori-wq/Growth-Engine
 - domains: customer-master, reservations, persistence, business-ui, production-readiness
-- lastVerifiedAt: 2026-09-02
+- lastVerifiedAt: 2026-09-03
 - sourceHead: 3ff5c9e08c7614d9d377892e7f64cf45e396c8e3
 
 ## Current implementation state
@@ -44,6 +44,11 @@ The production persistence and external pilot checks were verified through the r
 - Production `/api/persistence/preflight` reported `status: success`, `repositoryDriver: d1`, `databaseBackedPersistenceReady: true`, and no issues.
 - Production external-pilot readiness and MVP-final readiness both returned HTTP 200 with `status: ready`, zero warnings/errors, and no issues.
 - `/app/business/reservations/new` is deployed behind the expected owner sign-in redirect.
+- Cloudflare Production Workflow for `3ff5c9e` was user-confirmed Green on 2026-09-03.
+- Direct Production verification returned HTTP 200 for `/health`, `/version`, `/contracts/status`, `/api/persistence/status`, and `/api/persistence/preflight`.
+- Production `/contracts/status` reported `status: success`, supported PlanIds `free`, `pro`, and `business`; Business remained `not_offered`; `business.cross_app.flow` remained default-off; Business access remained fail-closed; the public Business entry remained hidden; and SaaS subscription payment remained separated from Growth Engine Customer Payment.
+- Production D1 remained healthy: `repositoryDriver: d1`, configured, reachable, database-backed persistence ready, with no blocked user flows or issues.
+- Production external-pilot readiness and MVP-final readiness again returned HTTP 200 with `status: ready` and no issues.
 
 Evidence: `EVID-growth-production-persistence-e2e-20260818`.
 
