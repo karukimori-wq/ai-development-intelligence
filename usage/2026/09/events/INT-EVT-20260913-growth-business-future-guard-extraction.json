@@ -1,0 +1,14 @@
+{
+  "eventId": "INT-EVT-20260913-growth-business-future-guard-extraction",
+  "taskRunId": "TASK-growth-engine-business-guard-20260913-a1",
+  "eventType": "extraction_evaluated",
+  "occurredAt": "2026-09-13T14:32:30.000Z",
+  "project": "Growth-Engine",
+  "taskClass": "integrate",
+  "knowledgeIds": [],
+  "evidenceIds": [],
+  "outcome": "unknown",
+  "iterationsToVerifiedResult": null,
+  "timeToRootCauseMinutes": null,
+  "notes": "Reusable learning evaluation is pending Growth Engine CI verification; no new knowledge entry is captured by this event."
+}
