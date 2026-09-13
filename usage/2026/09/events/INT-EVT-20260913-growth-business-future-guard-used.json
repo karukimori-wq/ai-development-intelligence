@@ -1,0 +1,18 @@
+{
+  "eventId": "INT-EVT-20260913-growth-business-future-guard-used",
+  "taskRunId": "TASK-growth-engine-business-guard-20260913-a1",
+  "eventType": "knowledge_used",
+  "occurredAt": "2026-09-13T14:35:54Z",
+  "project": "Growth-Engine",
+  "taskClass": "integrate",
+  "knowledgeIds": [
+    "RULE-canonical-owner-reference-first",
+    "PAT-production-readiness-needs-roundtrip",
+    "RULE-readiness-must-prove-runtime-capability"
+  ],
+  "evidenceIds": [],
+  "outcome": "helped",
+  "iterationsToVerifiedResult": 1,
+  "timeToRootCauseMinutes": null,
+  "notes": "The future Business cross-app boundary was kept separate from the internal owner pilot, fail-closed behind plan + availability + feature flag, and locked into Production smoke verification. Growth Engine PR #12 passed contract, type, Next.js, and OpenNext Cloudflare verification before merge."
+}
