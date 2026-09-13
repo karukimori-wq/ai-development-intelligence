@@ -4,14 +4,48 @@
 - status: active
 - project: karukimori-wq/Growth-Engine
 - domains: customer-master, reservations, persistence, business-ui, production-readiness
-- lastVerifiedAt: 2026-09-03
-- sourceHead: 22906220a348ce0bdfb671dc69c087bb841d8db4
+- lastVerifiedAt: 2026-09-13
+- sourceHead: f3d430ba990461aff209c04b1aa54b35cdda28c3
 
 ## Current implementation state
 
-The current `main` head is `2290622` (`Lock Business API access boundaries`).
+The current `main` head is `f3d430b` (`Verify release readiness in Production smoke checks`).
 
-Recent verified development includes:
+### 2026-09-13 Business boundary and release-readiness refresh
+
+Growth Engine now aligns its future Business boundary with the current `professional-platform-contracts/docs/contracts/plan-contract.md` while keeping Business out of the Numeria Studio / Velvet Free + Pro release.
+
+Verified repository state:
+
+- Canonical `PlanId` remains `free`, `pro`, `business`.
+- Business availability uses `unavailable` now, with `preparing` reserved for planned/admin-only visibility and `available` only for a future explicit Business release.
+- Normal-user Business purchase visibility is false and the public Business entry remains hidden while Business is unavailable/preparing.
+- `business.cross_app.flow` remains default-off and future access requires Business plan + available Business state + enabled feature flag.
+- Free and Pro cannot pass the Business integration gate.
+- Growth Engine remains Source of Truth for Customer, Reservation, Payment, Sales, Public Site, and Business plan workflow.
+- Numeria Studio / Velvet return payloads are limited to approved reference/status fields: `workspaceId`, `userId`, `customerId`, `reservationId`, `sessionId`, `reportId`, `reportRef`, `status`, `completedAt`, `sourceApp`, `correlationId`.
+- Full appraisal/report/conversation text, payment details, sales details, full Customer master, Stripe information, API keys, secrets, and secret prompts are explicitly outside that return boundary.
+- `/contracts/status` exposes the non-sensitive Business availability, source-of-truth, and allowed/forbidden return-boundary metadata.
+- Platform Admin monitoring endpoints now exist at `/release/status`, `/auth/status`, and `/persistence/status` in addition to the existing `/health`, `/version`, and `/contracts/status` surfaces.
+- `/release/status` reports a `free-pro-support-boundary`, Free/Pro ready, and Business unavailable/not purchasable.
+- `/auth/status` reports signed-owner-session readiness without exposing secret values.
+- `/persistence/status` and `/api/persistence/status` share the same D1/Postgres readiness implementation.
+- The manual `Cloudflare Production` workflow now smoke-checks `/release/status`, `/auth/status`, `/persistence/status`, Business unavailable state, Production auth configuration, and D1 readiness after deployment while preserving existing D1 roundtrip verification.
+
+Verification evidence:
+
+- PR #7 (`Refresh Growth Engine Business boundary contract`) merged as `27646bf`; PR CI passed typecheck, contract tests, Next.js build, and OpenNext Cloudflare build.
+- PR #8 (`Add release readiness status endpoints`) merged as `0574959`; PR CI passed typecheck, contract tests, Next.js build, and OpenNext Cloudflare build.
+- PR #9 (`Verify release readiness in Production smoke checks`) merged as `f3d430b`; PR CI passed typecheck, contract tests, Next.js build, and OpenNext Cloudflare build.
+- No Business product functionality, Business purchase flow, reservation/sales/refund UI expansion, D1 schema change, or Numeria Pro / Velvet Pro feature mixing was added by these changes.
+
+Important deployment distinction:
+
+- The repository state through `f3d430b` is verified by CI but has **not** yet been deployed by a new Cloudflare Production workflow run.
+- Do not describe the new monitoring endpoints or `unavailable/preparing` contract as Production-verified until the next intentional release-boundary Production run is completed and its smoke checks pass.
+- Continue batching changes and run Cloudflare Production once at a release boundary rather than after every small merge.
+
+Recent verified development also includes:
 
 - `9a8d69d`: added the customer-list action for registering a new Customer.
 - `288a210`: added `/app/business/customers/new`; the Server Action creates the canonical Growth Engine Customer, publishes `growth.customer.created.v1`, records an audit event, and redirects to the Customer detail.
@@ -25,17 +59,17 @@ Recent verified development includes:
 
 Verification for `e571b58` passed `npm run typecheck`, `npm run build`, and `npm run cf:build`. The OpenNext build includes `/app/business/reservations/new`.
 
-Business plan preparation at `3ff5c9e` adopts the canonical `PlanId` values from professional-platform-contracts `4a1f479`: `free`, `pro`, and `business`. Business remains `not_offered`; the `business.cross_app.flow` feature gate defaults off, public Business entry visibility is false, and access is fail-closed until the Business Plan is explicitly released. Contract metadata exposes this non-sensitive preparation state.
+Historical Business preparation at `3ff5c9e` adopted the canonical `PlanId` values from professional-platform-contracts. At that time Business used `not_offered`; this historical wording is superseded in current Growth Engine code by the current contract-aligned `unavailable` / `preparing` model described above.
 
-This preparation does not add Business product functionality, a public purchase route, a D1 migration, or a new Business database record. Contract tests prove Free and Pro cannot pass the Business gate and distinguish the professional's SaaS subscription from Customer Payment/Sales owned by Growth Engine. Verification passed professional-platform-contracts tests (21), Growth Engine contract tests (2), `npm run typecheck`, `npm run build`, and `npm run cf:build`.
+This preparation does not add Business product functionality, a public purchase route, a D1 migration, or a new Business database record. Contract tests prove Free and Pro cannot pass the Business gate and distinguish the professional's SaaS subscription from Customer Payment/Sales owned by Growth Engine.
 
-A follow-up contract compliance audit found that the unauthenticated Professional App surface still rendered Business navigation despite `businessOfferingStatus: not_offered`. Commit `7c2fc19` connects that surface to the offering contract, hides Business navigation/admin links/home CTA while unavailable, and keeps direct owner-protected internal pilot routes unchanged. No Business feature, D1 schema, persistence, payment, sales, or cross-app API behavior was added. Growth Engine contract tests (2), typecheck, Next.js build, and OpenNext Cloudflare build all passed. Cloudflare Production Workflow for `7c2fc19` was user-confirmed Green and production route verification passed on 2026-09-03.
+A follow-up contract compliance audit found that the unauthenticated Professional App surface still rendered Business navigation despite the then-current unavailable offering state. Commit `7c2fc19` connected that surface to the offering contract, hid Business navigation/admin links/home CTA while unavailable, and kept direct owner-protected internal pilot routes unchanged. No Business feature, D1 schema, persistence, payment, sales, or cross-app API behavior was added. Growth Engine contract tests, typecheck, Next.js build, and OpenNext Cloudflare build passed. Cloudflare Production Workflow for `7c2fc19` was user-confirmed Green and production route verification passed on 2026-09-03.
 
-A second contract-only audit at `2290622` locks the current owner Business API inventory to the shared authenticated, active-user, Business-plan and workspace resolver. It also clarifies that future cross-app Business APIs must combine canonical Business entitlement, offering availability and `business.cross_app.flow`, fail closed on missing state, and keep the existing Velvet Customer integration from becoming a Business entitlement bypass. README positioning now says Business is not publicly offered. No Business feature, runtime API behavior, D1 schema, persistence or Production configuration changed. Growth Engine contract tests (4), typecheck, Next.js build and OpenNext Cloudflare build passed locally. Cloudflare Production Workflow was not yet observed for this commit at capture time.
+A second contract-only audit at `2290622` locked the current owner Business API inventory to the shared authenticated, active-user, Business-plan and workspace resolver. It also clarified that future cross-app Business APIs must combine canonical Business entitlement, offering availability and `business.cross_app.flow`, fail closed on missing state, and keep the existing Velvet Customer integration from becoming a Business entitlement bypass.
 
 ## Production verification state
 
-The production persistence and external pilot checks were verified through the real user flow:
+The production persistence and external pilot checks were verified through the real user flow before the 2026-09-13 repository-only Business-boundary refresh:
 
 - Cloudflare D1 repository configured and reachable.
 - Database-backed persistence ready.
@@ -50,22 +84,22 @@ The production persistence and external pilot checks were verified through the r
 - `/app/business/reservations/new` is deployed behind the expected owner sign-in redirect.
 - Cloudflare Production Workflow for `3ff5c9e` was user-confirmed Green on 2026-09-03.
 - Direct Production verification returned HTTP 200 for `/health`, `/version`, `/contracts/status`, `/api/persistence/status`, and `/api/persistence/preflight`.
-- Production `/contracts/status` reported `status: success`, supported PlanIds `free`, `pro`, and `business`; Business remained `not_offered`; `business.cross_app.flow` remained default-off; Business access remained fail-closed; the public Business entry remained hidden; and SaaS subscription payment remained separated from Growth Engine Customer Payment.
 - Production D1 remained healthy: `repositoryDriver: d1`, configured, reachable, database-backed persistence ready, with no blocked user flows or issues.
-- Production external-pilot readiness and MVP-final readiness again returned HTTP 200 with `status: ready` and no issues.
 - Cloudflare Production Workflow for `7c2fc19` was user-confirmed Green on 2026-09-03.
-- Production `/contracts/status` continued to report `status: success`, `businessOfferingStatus: not_offered`, `businessFeatureFlagKey: business.cross_app.flow`, `businessFeatureFlagDefault: false`, and `publicBusinessEntryVisibleWhileNotOffered: false`.
 - Production `/api/persistence/status` continued to report D1 as the active repository driver, configured, reachable, database-backed persistence ready, with no issues or blocked user flows.
 - Production `/api/persistence/preflight` continued to report `status: success`, `repositoryDriver: d1`, `databaseBackedPersistenceReady: true`, no issues, and no blocked user flows.
 - Production external-pilot readiness and MVP-final readiness returned `status: ready` with no issues.
-- Production `/app/professional/numeria` and `/app/professional/velvet` returned HTTP 200 and did not render `/app/business` links, `Businessホーム`, or `予約確認` while Business is not offered.
+- Production `/app/professional/numeria` and `/app/professional/velvet` returned HTTP 200 and did not render `/app/business` links, `Businessホーム`, or `予約確認` while Business was not publicly offered.
 - Direct unauthenticated Production access to `/app/business` returned the expected sign-in redirect.
+- A later Cloudflare Production workflow was user-confirmed Green before PRs #7-#9; that run verified typecheck, Production configuration, Cloudflare identity, D1 schema, OpenNext build/deploy, auth secrets, public endpoints, owner session, Customer/Reservation D1 roundtrip, and canonical D1 rows.
 
-Evidence: `EVID-growth-production-persistence-e2e-20260818`.
+The current `f3d430b` repository additions (`/release/status`, `/auth/status`, `/persistence/status`, and the refreshed Business `unavailable/preparing` monitoring contract) remain pending the next intentional Production deployment.
+
+Evidence: `EVID-growth-production-persistence-e2e-20260818` plus Growth Engine PRs #7, #8, and #9.
 
 ## Source-of-truth boundary
 
-Growth Engine remains authoritative for Customer, Reservation, Customer Payment, and Sales. SaaS subscription billing for Free/Pro/Business is a separate entitlement concern. Professional Studio handoffs should carry references rather than copying the full Customer master or internal payment/sales state.
+Growth Engine remains authoritative for Customer, Reservation, Customer Payment, Sales, Public Site, and Business plan workflow. SaaS subscription billing for Free/Pro/Business is a separate entitlement concern. Professional Studio handoffs should carry references rather than copying the full Customer master or internal payment/sales state.
 
 ## Relevant reusable intelligence
 
@@ -76,7 +110,9 @@ Growth Engine remains authoritative for Customer, Reservation, Customer Payment,
 
 ## Recommended reconnect point
 
-Do not begin Business product implementation until Numeria Studio and Velvet Free/Pro are released and an explicit Business release decision changes the formal offering state. At that point, integrate the real subscription/entitlement provider with `business.cross_app.flow`, preserve reference-only cross-app boundaries, and re-run the full Cloudflare/D1 verification story.
+Do not begin Business product implementation until Numeria Studio and Velvet Free/Pro are released and an explicit Business release decision changes the formal availability state. At that point, integrate the real subscription/entitlement provider with `business.cross_app.flow`, preserve reference-only cross-app boundaries, and re-run the full Cloudflare/D1 verification story.
+
+Before that decision, safe Growth Engine work should stay limited to contract/readiness/monitoring boundaries and existing Free/Pro support integrations. Batch such changes and use one intentional Cloudflare Production workflow run at the release boundary.
 
 ## Sensitive-data review
 

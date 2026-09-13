@@ -2,9 +2,9 @@
   "version": 1,
   "generated": true,
   "aggregate": {
-    "taskRuns": 5,
-    "completeLearningLoops": 5,
-    "runsWithKnowledgeUsed": 4,
+    "taskRuns": 8,
+    "completeLearningLoops": 8,
+    "runsWithKnowledgeUsed": 7,
     "runsWithKnowledgeRejected": 1,
     "runsWithFailurePrevented": 0,
     "runsWithRepeatFailure": 0
@@ -22,7 +22,9 @@
       "repeatFailure": 0,
       "extractionEvaluated": 1,
       "captured": 0,
-      "knowledgeRetrieved": ["FAIL-webhook-identity-precedence"],
+      "knowledgeRetrieved": [
+        "FAIL-webhook-identity-precedence"
+      ],
       "knowledgeUsed": [],
       "knowledgeUseRate": 0,
       "completeLearningLoop": true
@@ -39,8 +41,12 @@
       "repeatFailure": 0,
       "extractionEvaluated": 1,
       "captured": 0,
-      "knowledgeRetrieved": ["FAIL-webhook-identity-precedence"],
-      "knowledgeUsed": ["FAIL-webhook-identity-precedence"],
+      "knowledgeRetrieved": [
+        "FAIL-webhook-identity-precedence"
+      ],
+      "knowledgeUsed": [
+        "FAIL-webhook-identity-precedence"
+      ],
       "knowledgeUseRate": 1,
       "completeLearningLoop": true
     },
@@ -56,9 +62,93 @@
       "repeatFailure": 0,
       "extractionEvaluated": 1,
       "captured": 0,
-      "knowledgeRetrieved": ["RULE-canonical-owner-reference-first"],
-      "knowledgeUsed": ["RULE-canonical-owner-reference-first"],
+      "knowledgeRetrieved": [
+        "RULE-canonical-owner-reference-first"
+      ],
+      "knowledgeUsed": [
+        "RULE-canonical-owner-reference-first"
+      ],
       "knowledgeUseRate": 1,
+      "completeLearningLoop": true
+    },
+    {
+      "taskRunId": "TASK-Growth-Engine-business-plan-prep-20260902-a1",
+      "project": "Growth-Engine",
+      "taskClass": "integrate",
+      "eventCount": 4,
+      "retrieval": 1,
+      "used": 1,
+      "rejected": 0,
+      "prevented": 0,
+      "repeatFailure": 0,
+      "extractionEvaluated": 1,
+      "captured": 1,
+      "knowledgeRetrieved": [
+        "RULE-readiness-must-prove-runtime-capability",
+        "RULE-canonical-owner-reference-first",
+        "FAIL-cross-app-handoff-contract-drift",
+        "RULE-secrets-never-enter-intelligence"
+      ],
+      "knowledgeUsed": [
+        "RULE-readiness-must-prove-runtime-capability",
+        "RULE-canonical-owner-reference-first",
+        "FAIL-cross-app-handoff-contract-drift",
+        "RULE-secrets-never-enter-intelligence"
+      ],
+      "knowledgeUseRate": 1,
+      "completeLearningLoop": true
+    },
+    {
+      "taskRunId": "TASK-Growth-Engine-latest-status-20260825-a1",
+      "project": "Growth-Engine",
+      "taskClass": "review",
+      "eventCount": 4,
+      "retrieval": 1,
+      "used": 1,
+      "rejected": 0,
+      "prevented": 0,
+      "repeatFailure": 0,
+      "extractionEvaluated": 1,
+      "captured": 1,
+      "knowledgeRetrieved": [
+        "RULE-readiness-must-prove-runtime-capability",
+        "PAT-production-readiness-needs-roundtrip",
+        "RULE-canonical-owner-reference-first",
+        "RULE-secrets-never-enter-intelligence"
+      ],
+      "knowledgeUsed": [
+        "RULE-readiness-must-prove-runtime-capability",
+        "PAT-production-readiness-needs-roundtrip",
+        "RULE-canonical-owner-reference-first",
+        "RULE-secrets-never-enter-intelligence"
+      ],
+      "knowledgeUseRate": 1,
+      "completeLearningLoop": true
+    },
+    {
+      "taskRunId": "TASK-Growth-Engine-manual-reservation-20260830-a1",
+      "project": "Growth-Engine",
+      "taskClass": "build",
+      "eventCount": 4,
+      "retrieval": 1,
+      "used": 1,
+      "rejected": 0,
+      "prevented": 0,
+      "repeatFailure": 0,
+      "extractionEvaluated": 1,
+      "captured": 1,
+      "knowledgeRetrieved": [
+        "RULE-readiness-must-prove-runtime-capability",
+        "FAIL-cross-app-handoff-contract-drift",
+        "RULE-canonical-owner-reference-first",
+        "RULE-secrets-never-enter-intelligence"
+      ],
+      "knowledgeUsed": [
+        "RULE-readiness-must-prove-runtime-capability",
+        "RULE-canonical-owner-reference-first",
+        "RULE-secrets-never-enter-intelligence"
+      ],
+      "knowledgeUseRate": 0.75,
       "completeLearningLoop": true
     },
     {
@@ -73,8 +163,12 @@
       "repeatFailure": 0,
       "extractionEvaluated": 1,
       "captured": 0,
-      "knowledgeRetrieved": ["FAIL-static-host-asset-path-assumption"],
-      "knowledgeUsed": ["FAIL-static-host-asset-path-assumption"],
+      "knowledgeRetrieved": [
+        "FAIL-static-host-asset-path-assumption"
+      ],
+      "knowledgeUsed": [
+        "FAIL-static-host-asset-path-assumption"
+      ],
       "knowledgeUseRate": 1,
       "completeLearningLoop": true
     },
@@ -90,15 +184,18 @@
       "repeatFailure": 0,
       "extractionEvaluated": 1,
       "captured": 0,
-      "knowledgeRetrieved": ["PAT-centralize-equivalent-environment-resolution"],
-      "knowledgeUsed": ["PAT-centralize-equivalent-environment-resolution"],
+      "knowledgeRetrieved": [
+        "PAT-centralize-equivalent-environment-resolution"
+      ],
+      "knowledgeUsed": [
+        "PAT-centralize-equivalent-environment-resolution"
+      ],
       "knowledgeUseRate": 1,
       "completeLearningLoop": true
     }
   ],
   "notes": [
-    "Task-run metrics are observational. Five pilot runs do not establish causal productivity improvement.",
-    "knowledgeUseRate counts distinct retrieved vs used knowledge IDs for a task run.",
-    "Failure prevention and recurrence remain zero because no case has yet satisfied the strict attribution policy."
+    "Task-run metrics are observational. Small pilot counts do not establish causal productivity improvement.",
+    "knowledgeUseRate counts distinct retrieved vs used knowledge IDs for a task run."
   ]
 }

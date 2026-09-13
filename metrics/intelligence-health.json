@@ -3,15 +3,15 @@
   "generated": true,
   "measuredAt": "2026-08-20T00:30:00.000Z",
   "inventory": {
-    "manifestKnowledgeEntries": 11,
-    "defaultRetrievalEntries": 9,
+    "manifestKnowledgeEntries": 12,
+    "defaultRetrievalEntries": 10,
     "activeRules": 3,
-    "activeFailures": 2,
+    "activeFailures": 3,
     "candidateFailures": 1,
     "activePatterns": 0,
     "candidatePatterns": 3,
     "subsumedEntries": 2,
-    "evidenceReferenced": 7
+    "evidenceReferenced": 8
   },
   "maturity": {
     "multiProjectRules": 2,
@@ -22,23 +22,27 @@
   },
   "qualitySignals": {
     "staleEntries": 0,
-    "unverifiedEntries": 3,
+    "unverifiedEntries": 4,
     "knownSupersededOrSubsumed": 2
   },
   "usage": {
-    "totalImmutableEvents": 1,
+    "totalImmutableEvents": 28,
     "eventCounts": {
-      "knowledge_captured": 1
+      "extraction_evaluated": 8,
+      "knowledge_rejected": 1,
+      "retrieval": 8,
+      "knowledge_used": 7,
+      "knowledge_captured": 4
     }
   },
   "outcomeMetrics": {
-    "retrievalEvents": 0,
-    "knowledgeUsedEvents": 0,
-    "knowledgeRejectedEvents": 0,
+    "retrievalEvents": 8,
+    "knowledgeUsedEvents": 7,
+    "knowledgeRejectedEvents": 1,
     "failuresPrevented": 0,
     "repeatFailures": 0,
     "repeatFailureShare": null,
-    "meanIterationsToVerifiedResult": null,
+    "meanIterationsToVerifiedResult": 1,
     "meanTimeToRootCauseMinutes": null,
     "newInputTokensPerTask": null
   },
