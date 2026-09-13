@@ -2,7 +2,7 @@
   "version": 1,
   "generated": true,
   "aggregate": {
-    "taskRuns": 8,
+    "taskRuns": 9,
     "completeLearningLoops": 8,
     "runsWithKnowledgeUsed": 7,
     "runsWithKnowledgeRejected": 1,
@@ -70,6 +70,27 @@
       ],
       "knowledgeUseRate": 1,
       "completeLearningLoop": true
+    },
+    {
+      "taskRunId": "TASK-growth-engine-business-guard-20260913-a1",
+      "project": "Growth-Engine",
+      "taskClass": "integrate",
+      "eventCount": 1,
+      "retrieval": 1,
+      "used": 0,
+      "rejected": 0,
+      "prevented": 0,
+      "repeatFailure": 0,
+      "extractionEvaluated": 0,
+      "captured": 0,
+      "knowledgeRetrieved": [
+        "RULE-canonical-owner-reference-first",
+        "PAT-production-readiness-needs-roundtrip",
+        "RULE-readiness-must-prove-runtime-capability"
+      ],
+      "knowledgeUsed": [],
+      "knowledgeUseRate": 0,
+      "completeLearningLoop": false
     },
     {
       "taskRunId": "TASK-Growth-Engine-business-plan-prep-20260902-a1",
