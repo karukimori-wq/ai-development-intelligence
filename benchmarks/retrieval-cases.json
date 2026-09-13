@@ -15,7 +15,7 @@
       "domains": ["webhooks", "identity", "adapters"],
       "keywords": ["sender", "source", "identity"],
       "expectedTop": ["FAIL-webhook-identity-precedence"],
-      "expectedWithinTop5": ["PAT-high-consequence-actions-need-hard-gates"]
+      "expectedWithinTop5": ["RULE-readiness-must-prove-runtime-capability"]
     },
     {
       "id": "BENCH-growth-numeria-handoff",
@@ -38,8 +38,8 @@
       "project": "Velvet",
       "domains": ["configuration", "postgres", "persistence"],
       "keywords": ["database_url", "postgres_url", "resolver"],
-      "expectedTop": ["PAT-centralize-equivalent-environment-resolution"],
-      "expectedWithinTop5": ["RULE-readiness-must-prove-runtime-capability"]
+      "expectedTop": ["RULE-readiness-must-prove-runtime-capability"],
+      "expectedWithinTop5": ["PAT-centralize-equivalent-environment-resolution"]
     },
     {
       "id": "BENCH-cross-app-data-ownership",
