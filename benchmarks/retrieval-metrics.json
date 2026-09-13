@@ -1,11 +1,233 @@
 {
   "version": 1,
   "measuredAt": "2026-08-20T00:30:00.000Z",
-  "status": "generated_by_ci",
-  "modes": {},
+  "modes": {
+    "metadata": {
+      "top1Accuracy": 1,
+      "mrr": 1,
+      "recallAt5": 1,
+      "cases": [
+        {
+          "id": "BENCH-growth-production-postgres",
+          "top5": [
+            "RULE-readiness-must-prove-runtime-capability",
+            "PAT-centralize-equivalent-environment-resolution",
+            "FAIL-cross-app-handoff-contract-drift",
+            "RULE-canonical-owner-reference-first",
+            "FAIL-vercel-static-output-directory-mismatch"
+          ],
+          "firstRelevantRank": 1
+        },
+        {
+          "id": "BENCH-communication-webhook-identity",
+          "top5": [
+            "FAIL-webhook-identity-precedence",
+            "RULE-readiness-must-prove-runtime-capability",
+            "RULE-canonical-owner-reference-first",
+            "FAIL-cross-app-handoff-contract-drift",
+            "FAIL-vercel-static-output-directory-mismatch"
+          ],
+          "firstRelevantRank": 1
+        },
+        {
+          "id": "BENCH-growth-numeria-handoff",
+          "top5": [
+            "FAIL-cross-app-handoff-contract-drift",
+            "RULE-readiness-must-prove-runtime-capability",
+            "PAT-derive-workflow-ids-once",
+            "RULE-canonical-owner-reference-first",
+            "FAIL-webhook-identity-precedence"
+          ],
+          "firstRelevantRank": 1
+        },
+        {
+          "id": "BENCH-numeria-static-host",
+          "top5": [
+            "FAIL-static-host-asset-path-assumption",
+            "FAIL-vercel-static-output-directory-mismatch",
+            "FAIL-cross-app-handoff-contract-drift",
+            "RULE-readiness-must-prove-runtime-capability",
+            "RULE-canonical-owner-reference-first"
+          ],
+          "firstRelevantRank": 1
+        },
+        {
+          "id": "BENCH-velvet-postgres-config",
+          "top5": [
+            "RULE-readiness-must-prove-runtime-capability",
+            "PAT-centralize-equivalent-environment-resolution",
+            "RULE-canonical-owner-reference-first",
+            "FAIL-cross-app-handoff-contract-drift",
+            "FAIL-vercel-static-output-directory-mismatch"
+          ],
+          "firstRelevantRank": 1
+        },
+        {
+          "id": "BENCH-cross-app-data-ownership",
+          "top5": [
+            "RULE-canonical-owner-reference-first",
+            "RULE-readiness-must-prove-runtime-capability",
+            "FAIL-cross-app-handoff-contract-drift",
+            "FAIL-vercel-static-output-directory-mismatch",
+            "FAIL-webhook-identity-precedence"
+          ],
+          "firstRelevantRank": 1
+        }
+      ]
+    },
+    "fulltext": {
+      "top1Accuracy": 0.8333333333333334,
+      "mrr": 1,
+      "recallAt5": 0.9,
+      "cases": [
+        {
+          "id": "BENCH-growth-production-postgres",
+          "top5": [
+            "RULE-readiness-must-prove-runtime-capability",
+            "PAT-centralize-equivalent-environment-resolution",
+            "RULE-secrets-never-enter-intelligence",
+            "FAIL-cross-app-handoff-contract-drift",
+            "FAIL-static-host-asset-path-assumption"
+          ],
+          "firstRelevantRank": 1
+        },
+        {
+          "id": "BENCH-communication-webhook-identity",
+          "top5": [
+            "FAIL-webhook-identity-precedence",
+            "RULE-canonical-owner-reference-first",
+            "FAIL-cross-app-handoff-contract-drift",
+            "PAT-derive-workflow-ids-once",
+            "PAT-high-consequence-actions-need-hard-gates"
+          ],
+          "firstRelevantRank": 1
+        },
+        {
+          "id": "BENCH-growth-numeria-handoff",
+          "top5": [
+            "FAIL-cross-app-handoff-contract-drift",
+            "PAT-derive-workflow-ids-once",
+            "RULE-canonical-owner-reference-first",
+            "FAIL-webhook-identity-precedence",
+            "FAIL-static-host-asset-path-assumption"
+          ],
+          "firstRelevantRank": 1
+        },
+        {
+          "id": "BENCH-numeria-static-host",
+          "top5": [
+            "FAIL-static-host-asset-path-assumption",
+            "FAIL-vercel-static-output-directory-mismatch",
+            "FAIL-cross-app-handoff-contract-drift",
+            "PAT-centralize-equivalent-environment-resolution",
+            "RULE-canonical-owner-reference-first"
+          ],
+          "firstRelevantRank": 1
+        },
+        {
+          "id": "BENCH-velvet-postgres-config",
+          "top5": [
+            "PAT-centralize-equivalent-environment-resolution",
+            "RULE-readiness-must-prove-runtime-capability",
+            "RULE-secrets-never-enter-intelligence",
+            "RULE-canonical-owner-reference-first",
+            "FAIL-cross-app-handoff-contract-drift"
+          ],
+          "firstRelevantRank": 1
+        },
+        {
+          "id": "BENCH-cross-app-data-ownership",
+          "top5": [
+            "RULE-canonical-owner-reference-first",
+            "FAIL-cross-app-handoff-contract-drift",
+            "PAT-derive-workflow-ids-once",
+            "PAT-centralize-equivalent-environment-resolution",
+            "RULE-readiness-must-prove-runtime-capability"
+          ],
+          "firstRelevantRank": 1
+        }
+      ]
+    },
+    "hybrid": {
+      "top1Accuracy": 0.8333333333333334,
+      "mrr": 1,
+      "recallAt5": 1,
+      "cases": [
+        {
+          "id": "BENCH-growth-production-postgres",
+          "top5": [
+            "RULE-readiness-must-prove-runtime-capability",
+            "PAT-centralize-equivalent-environment-resolution",
+            "FAIL-cross-app-handoff-contract-drift",
+            "RULE-canonical-owner-reference-first",
+            "FAIL-vercel-static-output-directory-mismatch"
+          ],
+          "firstRelevantRank": 1
+        },
+        {
+          "id": "BENCH-communication-webhook-identity",
+          "top5": [
+            "FAIL-webhook-identity-precedence",
+            "RULE-readiness-must-prove-runtime-capability",
+            "RULE-canonical-owner-reference-first",
+            "FAIL-cross-app-handoff-contract-drift",
+            "FAIL-vercel-static-output-directory-mismatch"
+          ],
+          "firstRelevantRank": 1
+        },
+        {
+          "id": "BENCH-growth-numeria-handoff",
+          "top5": [
+            "FAIL-cross-app-handoff-contract-drift",
+            "RULE-readiness-must-prove-runtime-capability",
+            "PAT-derive-workflow-ids-once",
+            "RULE-canonical-owner-reference-first",
+            "FAIL-webhook-identity-precedence"
+          ],
+          "firstRelevantRank": 1
+        },
+        {
+          "id": "BENCH-numeria-static-host",
+          "top5": [
+            "FAIL-static-host-asset-path-assumption",
+            "FAIL-vercel-static-output-directory-mismatch",
+            "FAIL-cross-app-handoff-contract-drift",
+            "RULE-readiness-must-prove-runtime-capability",
+            "RULE-canonical-owner-reference-first"
+          ],
+          "firstRelevantRank": 1
+        },
+        {
+          "id": "BENCH-velvet-postgres-config",
+          "top5": [
+            "PAT-centralize-equivalent-environment-resolution",
+            "RULE-readiness-must-prove-runtime-capability",
+            "RULE-canonical-owner-reference-first",
+            "FAIL-cross-app-handoff-contract-drift",
+            "RULE-secrets-never-enter-intelligence"
+          ],
+          "firstRelevantRank": 1
+        },
+        {
+          "id": "BENCH-cross-app-data-ownership",
+          "top5": [
+            "RULE-canonical-owner-reference-first",
+            "RULE-readiness-must-prove-runtime-capability",
+            "FAIL-cross-app-handoff-contract-drift",
+            "FAIL-vercel-static-output-directory-mismatch",
+            "FAIL-webhook-identity-precedence"
+          ],
+          "firstRelevantRank": 1
+        }
+      ]
+    }
+  },
   "decision": {
-    "semanticVectorNeededNow": null,
-    "thresholds": {"top1Accuracy": 0.8, "recallAt5": 0.9},
-    "note": "Placeholder committed before CI generation. The benchmark generator is authoritative for measured values."
+    "semanticVectorNeededNow": false,
+    "thresholds": {
+      "top1Accuracy": 0.8,
+      "recallAt5": 0.9
+    },
+    "note": "Semantic/vector retrieval is deferred when hybrid retrieval meets the current benchmark thresholds."
   }
 }
