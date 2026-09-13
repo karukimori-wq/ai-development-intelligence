@@ -1,14 +1,18 @@
 {
   "eventId": "INT-EVT-20260913-growth-business-future-guard-retrieval",
-  "eventType": "retrieval",
   "taskRunId": "TASK-growth-engine-business-guard-20260913-a1",
+  "eventType": "retrieval",
+  "occurredAt": "2026-09-13T14:15:00.000Z",
   "project": "Growth-Engine",
-  "taskClass": "integration",
+  "taskClass": "integrate",
   "knowledgeIds": [
     "RULE-canonical-owner-reference-first",
     "PAT-production-readiness-needs-roundtrip",
     "RULE-readiness-must-prove-runtime-capability"
   ],
-  "occurredAt": "2026-09-13T14:15:00.000Z",
+  "evidenceIds": [],
+  "outcome": "unknown",
+  "iterationsToVerifiedResult": null,
+  "timeToRootCauseMinutes": null,
   "notes": "Consulted existing Growth Engine release-readiness intelligence before preparing a separate fail-closed future Business cross-app API boundary."
 }
