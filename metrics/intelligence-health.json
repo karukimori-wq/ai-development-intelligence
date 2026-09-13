@@ -26,18 +26,18 @@
     "knownSupersededOrSubsumed": 2
   },
   "usage": {
-    "totalImmutableEvents": 29,
+    "totalImmutableEvents": 31,
     "eventCounts": {
-      "extraction_evaluated": 8,
+      "extraction_evaluated": 9,
       "knowledge_rejected": 1,
       "retrieval": 9,
-      "knowledge_used": 7,
+      "knowledge_used": 8,
       "knowledge_captured": 4
     }
   },
   "outcomeMetrics": {
     "retrievalEvents": 9,
-    "knowledgeUsedEvents": 7,
+    "knowledgeUsedEvents": 8,
     "knowledgeRejectedEvents": 1,
     "failuresPrevented": 0,
     "repeatFailures": 0,
