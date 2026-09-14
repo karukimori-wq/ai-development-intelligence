@@ -5,13 +5,13 @@
 - project: karukimori-wq/Growth-Engine
 - domains: integrations, production-readiness, monitoring, business-boundary
 - lastVerifiedAt: 2026-09-14
-- sourceHead: d775c1854f08b198c2200a1d03b0fc1374edaaf2
+- sourceHead: a86ca6b622b9a12ee09ff555b28445273cf6ff58
 
 ## Verified repository state
 
-Growth Engine main advanced from `f3d430b` to `d775c18` after continued release-readiness audits against the current professional-platform-contracts Plan contract.
+Growth Engine main advanced from `f3d430b` to `a86ca6b` after continued release-readiness audits against the current professional-platform-contracts Plan contract.
 
-Six additional PRs were merged with full CI verification:
+Eight additional PRs were merged with full CI verification:
 
 - PR #10, merged as `81720ec`, removed the hard-coded legacy AI Platform Core preview URL from `src/app/api/integrations/ai-platform-core/activity-test/route.ts`. The route now reads server-side `AI_PLATFORM_CORE_URL` and falls back to `https://ai-platform-core.karukimori.workers.dev`. `.env.example` documents the same endpoint and regression tests forbid the old preview URL.
 - PR #10 also expanded `/release/status` with Platform Admin monitoring metadata for entitlement readiness, usage readiness, AI Platform Core integration state, Feedback Hub release scope, latest deploy identity, and primary error categories. Business remains unavailable/not purchasable and no Business product functionality was added.
@@ -23,17 +23,29 @@ Six additional PRs were merged with full CI verification:
 - PR #14, merged as `4835be9`, added regression coverage that keeps `/app/business/:path*` behind signed owner-session middleware, constrains sign-in redirects to Business-local paths, and verifies the owner-session cookie remains HttpOnly, SameSite=Lax, and Secure.
 - PR #15, merged as `d775c18`, closed seven operational cross-app `*-test` API endpoints behind the same signed owner session. These endpoints can invoke APC, Numeria Studio, SNS Planner, Communication Planner, or Velvet and are now operator-only rather than public callable test surfaces.
 - PR #15 leaves non-test server-to-server integration endpoints unchanged. `/release/status` reports `operationalTestAccess` as signed-owner-session/non-public, and the next Production smoke run requires an unauthenticated POST to the APC activity-test endpoint to return HTTP 401 before any upstream side effect can occur.
+- PR #16, merged as `b752d19`, aligned both the reservation-to-Numeria handoff fallback and the owner-only Numeria session-start operational check with `https://numeria-studio.com`. `NUMERIA_STUDIO_BASE_URL` remains the server-side override, and regression tests forbid the retired Numeria preview domain from returning in those paths.
+- PR #17, merged as `a86ca6b`, made the SNS Planner post-draft and message-draft operational checks use server-side `SNS_PLANNER_BASE_URL`. The current SNS Planner preview URL remains the intentional fallback until that app moves domains. The post-draft CTA now points to the current Growth Engine Cloudflare `/public/booking` URL instead of the retired Growth Engine preview URL.
 - No public cross-app Business endpoint was introduced. The prepared resolver is intentionally unused until the formal Business release decision changes the shared contract.
 
-PR #10 through PR #15 passed `npm run typecheck`, `npm run test:contracts`, `npm run build`, and `npm run cf:build` before merge.
+PR #10 through PR #17 passed `npm run typecheck`, `npm run test:contracts`, `npm run build`, and `npm run cf:build` before merge. The post-merge main CI for `a86ca6b` also completed successfully through the same four verification stages.
 
 ## Important deployment distinction
 
-The repository state through `d775c18` is CI-verified but has not yet been deployed by a new Cloudflare Production workflow run.
+The repository state through `a86ca6b` is CI-verified but has not yet been deployed by a new Cloudflare Production workflow run.
 
-Do not describe the APC endpoint cutover, expanded `/release/status` metadata, deployed-SHA verification, future Business integration guard, Professional Business-link cleanup, or operational integration test protection as Production-verified until the next intentional release-boundary `Cloudflare Production` run succeeds.
+Do not describe the APC endpoint cutover, expanded `/release/status` metadata, deployed-SHA verification, future Business integration guard, Professional Business-link cleanup, operational integration test protection, Numeria production-domain fallback alignment, or SNS Planner operational endpoint cleanup as Production-verified until the next intentional release-boundary `Cloudflare Production` run succeeds.
 
-Continue batching safe release-readiness changes. Do not run Production for every small merge.
+This batch is now at the intended release boundary. Run Cloudflare Production once from current `main`, not once per merged PR.
+
+## Current Production configuration expected from main
+
+- repository driver: D1
+- AI Platform Core: `https://ai-platform-core.karukimori.workers.dev`
+- Numeria Studio: `https://numeria-studio.com`
+- Velvet: `https://velvet.karukimori.workers.dev`
+- SNS Planner: current configured preview endpoint until its own domain migration
+- `BUSINESS_CROSS_APP_FLOW_ENABLED=false`
+- Production workflow injects the exact deployed Git commit SHA into runtime metadata.
 
 ## Business and operator boundary remains unchanged
 
@@ -48,13 +60,19 @@ Continue batching safe release-readiness changes. Do not run Production for ever
 - Growth Engine remains Source of Truth for Customer, Reservation, Payment, Sales, Public Site, and Business plan workflow.
 - No Business purchase flow, refund UI, sales UI expansion, D1 schema change, or Numeria Pro / Velvet Pro feature mixing was introduced.
 
-## Reconnect point
+## Release-boundary Production verification
 
-Before the final release-boundary Production run, re-read current Growth Engine main and the formal Plan contract. The manual Production workflow should be run once after the batch is intentionally ready, then its smoke checks should be treated as the runtime evidence for release status.
+Run the manual `Cloudflare Production` workflow once from current main. The workflow must verify all of the following before the batch can be described as Production-verified:
 
-That Production run should also prove that an unauthenticated operational integration test request is rejected with HTTP 401 before an upstream call is made.
+- `/health`, `/version`, `/contracts/status`, `/release/status`, `/auth/status`, and `/persistence/status` are healthy;
+- `/version.commitSha` and `/release/status.latestDeploy.commitSha` equal the deployed GitHub SHA;
+- Business remains unavailable, not purchasable, not publicly visible, and the Business cross-app flag remains false;
+- operational cross-app test endpoints remain owner-only, including unauthenticated APC activity-test returning HTTP 401 before an upstream side effect;
+- auth readiness is healthy without exposing secret values;
+- D1 is reachable and database-backed persistence is ready;
+- authenticated Customer/Reservation D1 roundtrip succeeds and the created canonical rows are present.
 
-After that Production run, perform the deferred authenticated browser smoke for the Growth Engine → Numeria Studio handoff.
+After that Production run, perform the deferred authenticated browser smoke for the Growth Engine → Numeria Studio handoff when the product-flow verification is scheduled.
 
 ## Sensitive-data review
 
