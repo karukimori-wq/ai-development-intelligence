@@ -13,12 +13,16 @@
 
 3. **An unavailable canonical source is not an empty canonical source.** Growth Engine customer reads need an explicit `ok | unconfigured | unavailable` result. Velvet may continue showing its own saved memory snapshots during an outage, but UI must not tell the user that customers were deleted or that the canonical list is empty.
 
-4. **Free/Pro history limits must be enforced on API reads, not only pages.** Any direct history endpoint can otherwise bypass a UI-only rolling window. Capture history now applies the same plan history window server-side; dedicated gift-history reads are Pro-gated because event-specific history views are a Pro capability.
+4. **Free/Pro history limits must be enforced on every direct read surface, not only list pages.** Capture history, dedicated gift history, completed visit detail APIs, completed visit pages, and capture-organize deep links can each become bypasses if only the primary timeline UI is gated. Apply the same rolling-window helper at the direct resource boundary.
 
 5. **Recent-customer shortcuts should aggregate in storage.** The mobile capture picker needs recent people, but loading every capture to derive recency is unnecessary in D1/Postgres. Use bounded `GROUP BY customer_id ORDER BY MAX(created_at)` queries and keep the all-captures fallback only for non-persistent/dev storage.
 
-6. **Contract guards should cover the bypass surface.** Durable CI checks now include capture API history enforcement, gift-history Pro gating, message-draft URL privacy, recent-customer query efficiency, and capture draft recovery—not just UI labels.
+6. **Contract guards should cover the bypass surface.** Durable CI checks now include capture API history enforcement, gift-history Pro gating, completed-visit API/page history enforcement, capture-organize page/action enforcement, message-draft URL privacy, recent-customer query efficiency, and capture draft recovery—not just UI labels.
+
+7. **Editing/organizing endpoints need the same entitlement check as their page.** Protecting an organize page is insufficient if its server action can still accept an old resource ID. Re-check current identity, plan, ownership scope, and history eligibility immediately before mutation.
+
+8. **Active work is not historical content.** A long-running active visit should remain operable even if its start timestamp crosses a Free history cutoff. Apply the rolling history lock to completed visits while keeping active visit completion/edit flows available.
 
 ## Current evidence
 
-Velvet main `97d6c7767789aba7db7bf1a7a84058eabe759aa7` passed CI run 662 including contract guards, plan enforcement, query efficiency, TypeScript typecheck, and production build. This is CI evidence only; it is not production deployment verification.
+Velvet main `6953609eb215444da224b97cd954c33c3db9cffe` passed CI run 669 including contract guards, plan enforcement, query efficiency, TypeScript typecheck, and production build. This is CI evidence only; it is not production deployment verification.
