@@ -4,57 +4,58 @@
 - status: active
 - project: karukimori-wq/Growth-Engine
 - domains: integrations, production-readiness, monitoring, business-boundary
-- lastVerifiedAt: 2026-09-14
-- sourceHead: 4c9f2e6a174a9b780ace6f86df29ca944c63ef92
-- productionHead: a86ca6b622b9a12ee09ff555b28445273cf6ff58
-- productionRunId: 34799730375
-- productionRunNumber: 12
-- productionStatus: verified-with-post-production-main-delta
+- lastVerifiedAt: 2026-09-16
+- sourceHead: eae36d84bcc2a663aef9de0b6ff5329a130f14d6
+- productionHead: eae36d84bcc2a663aef9de0b6ff5329a130f14d6
+- productionRunId: 34948937359
+- productionRunNumber: 13
+- productionStatus: verified
 
 ## Verified repository state
 
-Growth Engine main is `4c9f2e6a174a9b780ace6f86df29ca944c63ef92`.
+Growth Engine main and Production are aligned at `eae36d84bcc2a663aef9de0b6ff5329a130f14d6`.
 
-The Free/Pro release-readiness batch through `a86ca6b622b9a12ee09ff555b28445273cf6ff58` is Production verified. A later contract-only handoff fix was merged as PR #18 and is CI-verified but not yet deployed.
+The Free/Pro support-boundary release-readiness work plus the Growth Engine → Numeria Studio handoff contract updates are now Production verified.
 
-Key merged work in the release-readiness batch:
+Key merged work:
 
 - APC operational endpoint uses the current Cloudflare endpoint and `/release/status` exposes release-readiness metadata.
 - Production workflow injects the exact deployed Git commit SHA and verifies it through `/version` and `/release/status`.
 - Future Business cross-app access remains fail-closed behind `planId=business`, Business availability `available`, and `business.cross_app.flow`.
 - Normal Professional surfaces do not expose unreleased Business navigation.
 - Operational cross-app `*-test` endpoints require a signed owner session.
-- Numeria handoff fallback and session-start operational test use `https://numeria-studio.com`.
+- Numeria handoff uses `https://numeria-studio.com` and carries reference-first trace/correlation context.
+- Numeria session-start operational test body uses canonical `customerId`, `traceId`, and `correlationId` fields.
 - SNS Planner operational tests use server-side `SNS_PLANNER_BASE_URL`; its current preview URL remains intentional until that app migrates.
 - No public Business product flow, refund UI, sales UI expansion, D1 schema redesign, or Numeria Pro / Velvet Pro mixing was introduced.
 
-PR #10 through PR #17 passed typecheck, contract tests, Next build, and Cloudflare build. Post-merge main CI for `a86ca6b` also passed the same verification stages.
+PR #10 through PR #19 passed the relevant typecheck, contract tests, Next build, and Cloudflare build verification before merge. Post-merge main CI also passed for the handoff changes.
 
-## Production verification — complete through a86ca6b
+## Production verification — complete through eae36d84
 
-Cloudflare Production run #12 (`34799730375`) completed successfully on 2026-09-14 and deployed exact SHA `a86ca6b622b9a12ee09ff555b28445273cf6ff58` to `https://growth-engine.karukimori.workers.dev`.
+Cloudflare Production run #13 (`34948937359`) targeted exact SHA `eae36d84bcc2a663aef9de0b6ff5329a130f14d6`.
 
-The run verified all of the following against the deployed Worker:
+The first attempt hit a transient post-deploy version convergence race: `/release/status.latestDeploy.commitSha` already reported `eae36d84`, while `/version.commitSha` temporarily returned the prior deployed SHA `a86ca6b`. D1, auth, contracts, release metadata, and the deployment itself were otherwise healthy.
+
+The failed job was rerun as attempt 2. Attempt 2 completed successfully and verified the deployed Worker, including:
 
 - `/health` healthy.
-- `/version.commitSha` equals the deployed GitHub SHA.
+- `/version.commitSha` equals `eae36d84bcc2a663aef9de0b6ff5329a130f14d6`.
 - `/contracts/status` healthy and aligned with the current identity/contract boundary.
 - `/release/status` reports Free ready, Pro ready, Business unavailable.
 - Business remains not purchasable, not publicly visible, and `BUSINESS_CROSS_APP_FLOW_ENABLED=false`.
 - Future Business integration gate remains fail-closed.
-- Operational integration tests are signed-owner-session only; unauthenticated APC activity-test returned the expected HTTP 401 before upstream side effects.
+- Operational integration tests remain signed-owner-session only.
 - `/auth/status` reports auth ready without exposing secret values.
 - `/persistence/status` and `/api/persistence/status` report D1 reachable and database-backed persistence ready.
-- An authenticated Customer/Reservation D1 roundtrip succeeded and the created canonical rows were verified directly in D1.
-- Production runtime bindings point to current APC, Numeria Studio custom domain, Velvet, Communication Planner, and the current SNS Planner endpoint.
+- An authenticated Customer/Reservation D1 roundtrip succeeded.
+- Canonical Customer/Reservation rows were verified directly in D1.
 
-The optional canonical Postgres export/import/count verification steps were skipped because `GROWTH_ENGINE_SOURCE_POSTGRES_URL` was unset; this was expected and did not block the D1 Production verification.
+The optional canonical Postgres export/import/count verification steps were skipped because the source Postgres migration input was not configured; this was expected and did not block D1 Production verification.
 
-## Post-Production main delta — PR #18
+## Growth Engine → Numeria Studio handoff
 
-PR #18, merged as `4c9f2e6`, aligns the Growth Engine → Numeria Studio start handoff with `professional-platform-contracts/docs/contracts/api-catalog.md`.
-
-The handoff URL now carries the formal reference-first context:
+PR #18 added the formal reference-first handoff context required by `professional-platform-contracts/docs/contracts/api-catalog.md`:
 
 - `workspaceId`
 - `userId`
@@ -63,27 +64,25 @@ The handoff URL now carries the formal reference-first context:
 - `traceId`
 - `correlationId`
 
-Growth Engine generates trace/correlation IDs once per rendered Numeria handoff and reuses those same IDs in both the outbound URL and the displayed handoff reference payload. Routing metadata remains `sourceApp=growth-engine` and `intent=start_appraisal_session`.
+Growth Engine generates trace/correlation IDs once per rendered Numeria handoff and reuses those same IDs in both the outbound URL and displayed handoff reference payload. Routing metadata remains `sourceApp=growth-engine` and `intent=start_appraisal_session`.
 
-PR #18 preserves the sensitive-data boundary: Payment status, Sales amount, Stripe data, Customer master, full Report/Appraisal bodies, transcripts, API keys, and secret prompts are not added to the handoff.
+PR #19 aligned the owner-only Numeria `Session.Start` operational test body with the same canonical reference fields.
 
-PR #18 passed typecheck, contract tests, Next build, and Cloudflare build before merge.
+The sensitive-data boundary is preserved: Payment status, Sales amount, Stripe data, Customer master, full Report/Appraisal bodies, transcripts, API keys, and secret prompts are not added to the handoff.
 
-Important distinction: `4c9f2e6` is newer than the Production-verified SHA `a86ca6b`. Do not describe the trace/correlation URL addition as Production verified until a future intentional Growth Engine release-boundary deploy includes it.
+Both PR #18 and PR #19 are included in Production SHA `eae36d84` and are now Production verified.
 
-Do not trigger a new Production deploy solely for PR #18. Batch it with the next deploy-affecting release boundary.
+## Numeria receiver — implemented and deployed
 
-## Numeria receiver gap discovered
+The receiver gap previously tracked as `karukimori-wq/numeria-studio-site#1` has been resolved.
 
-Cross-repository inspection found that current `karukimori-wq/numeria-studio-site` main accepts `/app/growth/start` through the Worker SPA fallback, so the route can open, but the current React client does not parse the Growth Engine handoff query and `/api/sessions/start` does not retain `reservationId` or `customerId` as session references.
+Numeria Studio PR #2 implemented the `/app/growth/start` receiver while keeping authenticated Clerk identity authoritative. Growth Engine URL identity values are not treated as authentication. Reservation/Customer/trace/correlation values are retained as external references only, and restricted Growth Engine-owned business data is not duplicated.
 
-Current Numeria D1 migrations define usage/report persistence but no dedicated persisted Session reference model for Growth Engine Reservation/Customer references.
+The receiver can initialize `Session.Start` after authenticated Growth Engine handoff while preserving existing in-progress appraisal and Free/Pro limit behavior. Direct Numeria usage is not auto-started by this path.
 
-This is tracked as `karukimori-wq/numeria-studio-site#1` — `Accept Growth Engine reservation handoff context on /app/growth/start`.
+Numeria PR #2 merged at `b6cd7759` and its automatic Cloudflare Production run #233 completed successfully, including tests, build, D1 migrations, Worker deployment, and Production verification. Issue #1 is closed as completed.
 
-The Numeria implementation should keep authenticated Clerk identity authoritative, validate workspace scope, retain Reservation/Customer as external references only, and must not duplicate Growth Engine Customer master, Payment, Sales, Stripe, full Report, or other restricted bodies.
-
-An authenticated browser smoke from Growth Engine reservation detail to Numeria Studio should be performed only after that receiver implementation is merged and deployed.
+The remaining handoff verification is an authenticated browser smoke through the real user flow: Growth Engine reservation detail → Numeria Studio → Clerk authentication → referenced appraisal session initialization.
 
 ## Business and ownership boundary
 
@@ -96,9 +95,11 @@ An authenticated browser smoke from Growth Engine reservation detail to Numeria 
 
 ## Monitoring follow-up
 
-Platform Admin runtime monitoring already uses the canonical Growth Engine Cloudflare fallback, but stale Growth Engine/Numeria example/fallback URLs remain elsewhere. Cleanup is tracked in `karukimori-wq/Platform-Admin#2`.
+Platform Admin stale Growth Engine/Numeria monitoring URLs were cleaned up in PR #3 on 2026-09-16. The cleanup updates the Growth Engine example to the current Cloudflare Production URL, updates Numeria monitoring defaults/examples to `https://numeria-studio.com`, and adds a regression verifier forbidding the retired Growth Engine Vercel and Numeria preview URLs.
 
-Avoid concurrent blind writes while Platform Admin PR #1 remains open; its monitoring cleanup should be reconciled against current main before editing.
+The branch verification passed the monitoring URL regression check, TypeScript typecheck, and Next.js Production build. PR #3 merged as `63bd2e95220f57c6aeed1dd5a75fd1a79d814180`, and Platform Admin issue #2 closed as completed. SNS Planner's current preview endpoint was intentionally left unchanged pending its own confirmed migration.
+
+No Platform Admin Production deploy was triggered solely for this small monitoring cleanup; it can be included with the next Platform Admin release boundary.
 
 ## Sensitive-data review
 
