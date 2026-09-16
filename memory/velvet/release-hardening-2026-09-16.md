@@ -23,6 +23,8 @@
 
 8. **Active work is not historical content.** A long-running active visit should remain operable even if its start timestamp crosses a Free history cutoff. Apply the rolling history lock to completed visits while keeping active visit completion/edit flows available.
 
+9. **Frequent input suggestions must not scan full history.** Capture suggestions are on a high-frequency mobile path. Reuse bounded dictionary rows (use count + last-used time) and customer memory tags for ranking instead of loading every capture and recomputing usage on each render. Guard this in CI because it is easy to regress while improving suggestion quality.
+
 ## Current evidence
 
-Velvet main `6953609eb215444da224b97cd954c33c3db9cffe` passed CI run 669 including contract guards, plan enforcement, query efficiency, TypeScript typecheck, and production build. This is CI evidence only; it is not production deployment verification.
+Velvet main `a3820f0b54cddb847a5ba840b65436beb4434a71` passed CI run 671 including contract guards, plan enforcement, query efficiency, TypeScript typecheck, and production build. This is CI evidence only; it is not production deployment verification.
