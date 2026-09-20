@@ -31,6 +31,12 @@
 
 12. **Customer names must not be carried through failure URLs.** Registration errors should use server-action state rather than query-string recovery. This avoids placing customer-identifying text in browser history/referrers while also preserving the draft for retry.
 
+13. **A cross-app create UI does not move canonical ownership when the owning app executes the command.** Velvet may offer a minimal customer-registration form while Growth Engine performs and audits the canonical `Customer.Create`. Keep the bridge narrow, validate the success operation/event shape, and store only the returned reference plus allowed non-canonical snapshot.
+
+14. **Malformed successful upstream payloads are availability failures, not empty data.** An HTTP 2xx customer-list response without the contracted list shape must be treated as `unavailable`; otherwise Free customer-limit enforcement can incorrectly permit creation.
+
+15. **Mobile release hardening includes non-touch accessibility.** Keep a visible `:focus-visible` treatment and honor `prefers-reduced-motion`; mobile-first does not mean touch-only.
+
 ## Current evidence
 
-Velvet main `053117c0e8c7874b7cf5ab8ea5c58be1c76261c8` passed CI run 705 including contract guards, plan enforcement, query efficiency, privacy/cache checks, TypeScript typecheck, and production build. This is CI evidence only; it is not production deployment verification.
+Velvet main `a784c66fc34ff161457524083ef7136a4514ed9c` passed CI run 713 including responsibility/bridge guards, plan enforcement, query efficiency, privacy/cache checks, mobile accessibility guards, TypeScript typecheck, and production build. This is CI evidence only; it is not production deployment verification.
