@@ -25,6 +25,12 @@
 
 9. **Frequent input suggestions must not scan full history.** Capture suggestions are on a high-frequency mobile path. Reuse bounded dictionary rows (use count + last-used time) and customer memory tags for ranking instead of loading every capture and recomputing usage on each render. Guard this in CI because it is easy to regress while improving suggestion quality.
 
+10. **Dashboard metrics must separate total counts from preview limits.** A bounded list such as five due follow-ups or five visit-cycle alerts is appropriate for rendering, but its length is not the total metric. Count due follow-ups in storage and count the full computed alert set before slicing the preview.
+
+11. **Free customer limits must fail closed when the canonical customer source is unavailable.** Velvet cannot safely decide whether a Free workspace is below the 30-customer cap if Growth Engine cannot return the canonical list. Preserve the entered name in page state, show an availability explanation, and do not create until the limit can be verified.
+
+12. **Customer names must not be carried through failure URLs.** Registration errors should use server-action state rather than query-string recovery. This avoids placing customer-identifying text in browser history/referrers while also preserving the draft for retry.
+
 ## Current evidence
 
-Velvet main `a3820f0b54cddb847a5ba840b65436beb4434a71` passed CI run 671 including contract guards, plan enforcement, query efficiency, TypeScript typecheck, and production build. This is CI evidence only; it is not production deployment verification.
+Velvet main `053117c0e8c7874b7cf5ab8ea5c58be1c76261c8` passed CI run 705 including contract guards, plan enforcement, query efficiency, privacy/cache checks, TypeScript typecheck, and production build. This is CI evidence only; it is not production deployment verification.
