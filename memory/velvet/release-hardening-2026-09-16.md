@@ -39,4 +39,4 @@
 
 ## Current evidence
 
-Velvet main `a784c66fc34ff161457524083ef7136a4514ed9c` passed CI run 713 including responsibility/bridge guards, plan enforcement, query efficiency, privacy/cache checks, mobile accessibility guards, TypeScript typecheck, and production build. This is CI evidence only; it is not production deployment verification.
+Velvet main `118d254f30bd54d47eeee7d2663a229b42c911a9` passed CI run 715 including responsibility/bridge guards, direct history/follow-up plan enforcement, query efficiency, privacy/cache checks, mobile accessibility guards, TypeScript typecheck, and production build. This is CI evidence only; it is not production deployment verification.
