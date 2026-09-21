@@ -37,6 +37,12 @@
 
 15. **Mobile release hardening includes non-touch accessibility.** Keep a visible `:focus-visible` treatment and honor `prefers-reduced-motion`; mobile-first does not mean touch-only.
 
+13. **Remove obsolete input paths instead of leaving privacy-sensitive redirect helpers dormant.** Old profile/field server actions carried user-entered memory values in redirect query strings even after the active UI had moved to the in-page memory editor. Delete dead helpers, update CI guards to the current flow, and scan redirect construction for private text keys.
+
+14. **Five-item mobile navigation needs explicit label geometry.** With Home / 顧客 / 覚える / 思い出す / 予定, wrap labels in a dedicated non-wrapping label element, keep equal grid columns, and keep the center 覚える action visually distinct without changing hit-target balance.
+
+15. **Pro-only export should be reflected before the download request.** The export API remains the authoritative server-side gate, while the data screen should show a Pro affordance instead of sending Free users into a raw 403 response.
+
 ## Current evidence
 
 Velvet main `118d254f30bd54d47eeee7d2663a229b42c911a9` passed CI run 715 including responsibility/bridge guards, direct history/follow-up plan enforcement, query efficiency, privacy/cache checks, mobile accessibility guards, TypeScript typecheck, and production build. This is CI evidence only; it is not production deployment verification.
